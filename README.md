@@ -1,28 +1,908 @@
-# Shana 👗
+[shana.html](https://github.com/user-attachments/files/26662218/shana.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shana — UK Wardrobe Rental</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --b1:#1E0F06;--b2:#3A1F0D;--b3:#6B3A1F;--b4:#9A6040;
+  --b5:#C49A72;--b6:#E2C9A8;--b7:#F2E8D8;--b8:#FBF7F2;
+  --accent:#8B4513;--warm:#C07840;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--b8);color:var(--b1);overflow-x:hidden;}
 
-A UK peer-to-peer wardrobe rental platform built as a concept/research project.
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--b7);}
+::-webkit-scrollbar-thumb{background:var(--b5);border-radius:3px;}
 
-## About
-Shana is a clothing rental platform that allows anyone across the UK to:
-- 🔍 Browse and rent clothes from real wardrobes
-- 🛍️ Buy items outright at fair prices
-- 💰 List their own clothes and earn money
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:var(--b8);border-bottom:0.5px solid var(--b6);position:sticky;top:0;z-index:1000;transition:box-shadow 0.3s;}
+.nav.scrolled{box-shadow:0 2px 20px rgba(30,15,6,0.08);}
+.nav-logo{font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--b2);cursor:pointer;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{text-decoration:none;font-size:0.78rem;font-weight:400;letter-spacing:0.08em;color:var(--b3);transition:color 0.2s;cursor:pointer;}
+.nav-links a:hover{color:var(--b1);}
+.nav-links a.active{color:var(--b1);font-weight:600;}
+.nav-ctas{display:flex;gap:0.8rem;align-items:center;}
+.btn-out{background:transparent;border:1.5px solid var(--b3);color:var(--b3);padding:0.48rem 1.2rem;border-radius:24px;font-size:0.76rem;font-family:'Montserrat',sans-serif;font-weight:500;cursor:pointer;transition:all 0.2s;}
+.btn-out:hover{background:var(--b3);color:var(--b8);}
+.btn-fill{background:var(--b2);border:none;color:var(--b8);padding:0.48rem 1.3rem;border-radius:24px;font-size:0.76rem;font-family:'Montserrat',sans-serif;font-weight:500;cursor:pointer;transition:background 0.2s;}
+.btn-fill:hover{background:var(--b1);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:22px;height:2px;background:var(--b2);border-radius:2px;transition:all 0.3s;}
 
-## Tech Stack
-- HTML5, CSS3, Vanilla JavaScript
-- Google Fonts (Great Vibes, Montserrat, Playfair Display)
-- Single-page application — no frameworks, no dependencies
+/* PAGES */
+.page{display:none;animation:fadeIn 0.3s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
-## Features
-- Browse listings with filters (Womenswear, Menswear, Occasionwear, Streetwear, Accessories)
-- Item detail pages with rental date calculator
-- Earnings calculator for lenders
-- Login / Signup modal
-- Fully responsive design
-- Brown luxury colour palette
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;align-items:stretch;}
+.hero-l{padding:5rem 3rem 4rem 3.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--b8);}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--b7);color:var(--b3);font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.32rem 1rem;border-radius:20px;margin-bottom:1.6rem;width:fit-content;border:0.5px solid var(--b6);}
+.tag-dot{width:6px;height:6px;border-radius:50%;background:var(--b4);}
+.hero-logo{font-family:'Great Vibes',cursive;font-size:6.5rem;color:var(--b2);line-height:1;margin-bottom:0.4rem;}
+.hero-tagline{font-size:1rem;font-weight:300;color:var(--b3);line-height:1.85;max-width:420px;margin-bottom:2rem;}
+.hero-tagline strong{color:var(--accent);font-weight:500;}
+.hero-btns{display:flex;gap:0.9rem;flex-wrap:wrap;margin-bottom:2.2rem;}
+.btn-dark{background:var(--b1);color:var(--b8);border:none;padding:0.82rem 1.9rem;border-radius:28px;font-size:0.8rem;font-family:'Montserrat',sans-serif;font-weight:500;cursor:pointer;transition:background 0.2s;}
+.btn-dark:hover{background:var(--b2);}
+.btn-warm{background:var(--accent);color:var(--b8);border:none;padding:0.82rem 1.9rem;border-radius:28px;font-size:0.8rem;font-family:'Montserrat',sans-serif;font-weight:500;cursor:pointer;transition:background 0.2s;}
+.btn-warm:hover{background:var(--b3);}
+.trust-row{display:flex;gap:1.4rem;flex-wrap:wrap;}
+.tchip{display:flex;align-items:center;gap:5px;font-size:0.72rem;color:var(--b4);}
+.tdot{width:5px;height:5px;border-radius:50%;background:var(--b5);}
+.hero-r{background:var(--b2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.3rem;padding:3rem 2rem;position:relative;overflow:hidden;}
+.hero-r::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hero-r::after{content:'';position:absolute;bottom:-60px;left:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.03);}
+.hcard{background:rgba(251,247,242,0.97);border-radius:16px;padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;width:100%;max-width:300px;z-index:2;transition:transform 0.2s;}
+.hcard:hover{transform:translateX(4px);}
+.hcard-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hcard-title{font-size:0.84rem;font-weight:600;color:var(--b1);margin-bottom:0.12rem;}
+.hcard-sub{font-size:0.72rem;color:var(--b4);}
+.hstats{display:flex;gap:0.8rem;z-index:2;width:100%;max-width:300px;}
+.hstat{background:rgba(255,255,255,0.1);border-radius:14px;padding:0.9rem;flex:1;text-align:center;}
+.hstat-num{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--b7);line-height:1;}
+.hstat-lbl{font-size:0.6rem;color:rgba(226,201,168,0.7);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.3rem;}
 
-## Status
-🚧 Concept / prototype stage — built for research and study purposes.
+/* SEARCH */
+.search-section{background:var(--b8);padding:1.6rem 3rem;border-bottom:0.5px solid var(--b6);}
+.sbar{display:flex;background:var(--b8);border:1.5px solid var(--b5);border-radius:50px;overflow:hidden;max-width:820px;margin:0 auto;}
+.sseg{display:flex;flex-direction:column;padding:0.65rem 1.3rem;flex:1;border-right:1px solid var(--b6);cursor:pointer;transition:background 0.2s;}
+.sseg:hover{background:var(--b7);}
+.sseg:last-of-type{border-right:none;}
+.sseg-lbl{font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--b2);margin-bottom:0.12rem;}
+.sseg-val{font-size:0.78rem;color:var(--b4);}
+.sgo{background:var(--b2);border:none;color:var(--b8);padding:0.55rem 1.5rem;margin:0.35rem;border-radius:40px;font-size:0.78rem;font-family:'Montserrat',sans-serif;font-weight:500;cursor:pointer;white-space:nowrap;transition:background 0.2s;}
+.sgo:hover{background:var(--b1);}
 
-## Author
-Built by Shana — studying the viability of a UK wardrobe rental market.
+/* HOW IT WORKS */
+.how{padding:5rem 3rem;background:var(--b7);}
+.slbl{font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;display:block;margin-bottom:0.6rem;}
+.stitle{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:400;color:var(--b1);margin-bottom:0.6rem;line-height:1.2;}
+.ssub{font-size:0.86rem;color:var(--b3);font-weight:300;line-height:1.75;max-width:480px;margin-bottom:3rem;}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.how-card{background:var(--b8);border-radius:18px;padding:1.8rem 1.4rem;border:0.5px solid var(--b6);transition:transform 0.2s,box-shadow 0.2s;}
+.how-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(30,15,6,0.08);}
+.how-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.74rem;font-weight:600;margin-bottom:1.2rem;}
+.how-card h3{font-size:0.9rem;font-weight:600;color:var(--b1);margin-bottom:0.5rem;}
+.how-card p{font-size:0.78rem;color:var(--b3);line-height:1.7;font-weight:300;}
+
+/* LISTINGS PAGE */
+.listings-page{padding:3rem;}
+.listings-hero{background:var(--b2);border-radius:20px;padding:3rem;margin-bottom:2.5rem;display:flex;justify-content:space-between;align-items:center;}
+.listings-hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--b7);font-weight:400;}
+.listings-hero p{font-size:0.88rem;color:var(--b5);margin-top:0.5rem;font-weight:300;}
+.filter-bar{display:flex;gap:0.8rem;margin-bottom:2rem;flex-wrap:wrap;align-items:center;}
+.filter-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--b4);margin-right:0.5rem;}
+.ftab{padding:0.45rem 1.1rem;border-radius:20px;font-size:0.76rem;font-weight:500;cursor:pointer;border:1.5px solid var(--b6);background:transparent;color:var(--b4);font-family:'Montserrat',sans-serif;transition:all 0.18s;}
+.ftab:hover{border-color:var(--b3);color:var(--b3);}
+.ftab.act{background:var(--b2);color:var(--b8);border-color:var(--b2);}
+.ftab.act-w{background:var(--b3);color:var(--b8);border-color:var(--b3);}
+.sort-select{margin-left:auto;padding:0.45rem 1rem;border-radius:20px;border:1.5px solid var(--b6);background:var(--b8);color:var(--b3);font-family:'Montserrat',sans-serif;font-size:0.76rem;cursor:pointer;outline:none;}
+.items-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.icard{background:var(--b8);border-radius:18px;overflow:hidden;cursor:pointer;border:0.5px solid var(--b6);transition:transform 0.2s,box-shadow 0.2s;}
+.icard:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(30,15,6,0.1);}
+.iimg{height:200px;display:flex;align-items:center;justify-content:center;position:relative;}
+.ibadge{position:absolute;top:0.7rem;left:0.7rem;font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.26rem 0.65rem;border-radius:12px;}
+.iheart{position:absolute;top:0.7rem;right:0.7rem;width:28px;height:28px;background:rgba(251,247,242,0.92);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.2s;}
+.iheart:hover{transform:scale(1.15);}
+.ibody{padding:0.9rem 1rem 1.1rem;}
+.iname{font-size:0.86rem;font-weight:600;color:var(--b1);margin-bottom:0.12rem;}
+.iowner{font-size:0.72rem;color:var(--b4);margin-bottom:0.5rem;}
+.irating{display:flex;align-items:center;gap:4px;margin-bottom:0.6rem;}
+.istar{color:var(--warm);font-size:0.7rem;}
+.irating-count{font-size:0.7rem;color:var(--b4);}
+.ifooter{display:flex;justify-content:space-between;align-items:center;}
+.iprice{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--b2);font-weight:400;}
+.iprice span{font-family:'Montserrat',sans-serif;font-size:0.66rem;color:var(--b4);}
+.isize{font-size:0.68rem;font-weight:500;padding:0.2rem 0.55rem;border-radius:10px;background:var(--b6);color:var(--b2);}
+.irbtn{width:100%;background:var(--b8);border:1.5px solid var(--b3);color:var(--b3);padding:0.58rem;border-radius:12px;font-size:0.76rem;font-family:'Montserrat',sans-serif;font-weight:500;cursor:pointer;margin-top:0.8rem;transition:all 0.2s;}
+.irbtn:hover{background:var(--b2);color:var(--b8);border-color:var(--b2);}
+
+/* ITEM DETAIL */
+.item-detail{padding:2.5rem 3rem;}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--b3);cursor:pointer;margin-bottom:1.5rem;font-weight:500;transition:color 0.2s;}
+.back-btn:hover{color:var(--b1);}
+.item-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.item-imgs{display:flex;flex-direction:column;gap:0.8rem;}
+.item-main-img{height:480px;border-radius:20px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.item-thumbs{display:flex;gap:0.8rem;}
+.item-thumb{width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s;}
+.item-thumb.active{border-color:var(--b3);}
+.item-info-panel{padding-top:1rem;}
+.item-info-badge{display:inline-block;font-size:0.66rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.7rem;border-radius:12px;margin-bottom:1rem;}
+.item-info-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--b1);margin-bottom:0.5rem;line-height:1.2;}
+.item-info-owner{font-size:0.82rem;color:var(--b4);margin-bottom:1rem;}
+.item-price-row{display:flex;align-items:baseline;gap:0.8rem;margin-bottom:1.5rem;}
+.item-price-big{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--b2);}
+.item-price-day{font-size:0.82rem;color:var(--b4);}
+.item-price-buy{font-size:0.9rem;color:var(--accent);font-weight:500;}
+.item-divider{height:0.5px;background:var(--b6);margin:1.5rem 0;}
+.item-sizes-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--b3);margin-bottom:0.7rem;}
+.sizes-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.size-btn{padding:0.45rem 0.9rem;border-radius:10px;border:1.5px solid var(--b6);background:var(--b8);color:var(--b3);font-size:0.78rem;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.18s;}
+.size-btn:hover,.size-btn.sel{background:var(--b2);color:var(--b8);border-color:var(--b2);}
+.dates-row{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.5rem;}
+.date-field{display:flex;flex-direction:column;gap:0.3rem;}
+.date-field label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--b3);}
+.date-field input{padding:0.65rem 0.9rem;border:1.5px solid var(--b6);border-radius:12px;font-family:'Montserrat',sans-serif;font-size:0.82rem;color:var(--b1);background:var(--b8);outline:none;transition:border-color 0.2s;}
+.date-field input:focus{border-color:var(--b4);}
+.total-box{background:var(--b7);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1.5rem;border:0.5px solid var(--b6);}
+.total-row{display:flex;justify-content:space-between;font-size:0.82rem;color:var(--b3);margin-bottom:0.4rem;}
+.total-row.bold{font-weight:600;color:var(--b1);font-size:0.88rem;margin-top:0.6rem;padding-top:0.6rem;border-top:0.5px solid var(--b6);}
+.rent-big-btn{width:100%;background:var(--b1);color:var(--b8);border:none;padding:1rem;border-radius:14px;font-size:0.88rem;font-family:'Montserrat',sans-serif;font-weight:600;cursor:pointer;margin-bottom:0.8rem;transition:background 0.2s;letter-spacing:0.04em;}
+.rent-big-btn:hover{background:var(--b2);}
+.buy-big-btn{width:100%;background:transparent;color:var(--accent);border:1.5px solid var(--accent);padding:0.9rem;border-radius:14px;font-size:0.84rem;font-family:'Montserrat',sans-serif;font-weight:500;cursor:pointer;transition:all 0.2s;}
+.buy-big-btn:hover{background:var(--accent);color:var(--b8);}
+
+/* HOW TO LIST */
+.list-page{padding:3rem;}
+.list-hero{background:var(--b1);border-radius:20px;padding:3.5rem;margin-bottom:2.5rem;text-align:center;}
+.list-hero h1{font-family:'Great Vibes',cursive;font-size:4rem;color:var(--b6);margin-bottom:0.5rem;}
+.list-hero p{font-size:0.92rem;color:var(--b5);font-weight:300;max-width:500px;margin:0 auto;}
+.list-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;}
+.lstep{background:var(--b8);border-radius:18px;padding:2rem 1.6rem;border:0.5px solid var(--b6);text-align:center;}
+.lstep-num{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:600;margin:0 auto 1.2rem;font-family:'Playfair Display',serif;}
+.lstep h3{font-size:0.95rem;font-weight:600;color:var(--b1);margin-bottom:0.5rem;}
+.lstep p{font-size:0.8rem;color:var(--b3);line-height:1.7;font-weight:300;}
+.list-form-section{background:var(--b8);border-radius:20px;padding:2.5rem;border:0.5px solid var(--b6);max-width:700px;margin:0 auto;}
+.list-form-section h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--b1);margin-bottom:0.4rem;}
+.list-form-section p{font-size:0.84rem;color:var(--b4);margin-bottom:2rem;font-weight:300;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.form-group{display:flex;flex-direction:column;gap:0.35rem;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--b3);}
+.form-group input,.form-group select,.form-group textarea{padding:0.72rem 1rem;border:1.5px solid var(--b6);border-radius:12px;font-family:'Montserrat',sans-serif;font-size:0.84rem;color:var(--b1);background:var(--b7);outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--b4);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.upload-area{border:2px dashed var(--b5);border-radius:14px;padding:2.5rem;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--b7);}
+.upload-area:hover{border-color:var(--b3);background:var(--b6);}
+.upload-icon{font-size:2rem;margin-bottom:0.5rem;}
+.upload-text{font-size:0.84rem;color:var(--b3);font-weight:500;}
+.upload-sub{font-size:0.74rem;color:var(--b5);margin-top:0.2rem;}
+.submit-btn{width:100%;background:var(--b1);color:var(--b8);border:none;padding:1rem;border-radius:14px;font-size:0.9rem;font-family:'Montserrat',sans-serif;font-weight:600;cursor:pointer;margin-top:1.5rem;transition:background 0.2s;letter-spacing:0.04em;}
+.submit-btn:hover{background:var(--b2);}
+
+/* HOW IT WORKS PAGE */
+.hiw-page{padding:3rem;}
+.hiw-hero{text-align:center;padding:3rem 2rem;margin-bottom:3rem;}
+.hiw-hero .hero-logo{font-size:4rem;margin-bottom:0.5rem;}
+.hiw-hero h1{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--b1);margin-bottom:1rem;font-weight:400;}
+.hiw-hero p{font-size:0.92rem;color:var(--b4);font-weight:300;max-width:520px;margin:0 auto;line-height:1.8;}
+.hiw-sections{display:flex;flex-direction:column;gap:1.5rem;}
+.hiw-sec{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;background:var(--b8);border-radius:20px;padding:3rem;border:0.5px solid var(--b6);}
+.hiw-sec.rev{direction:rtl;}
+.hiw-sec.rev>*{direction:ltr;}
+.hiw-sec-img{height:300px;border-radius:16px;display:flex;align-items:center;justify-content:center;}
+.hiw-sec-num{font-family:'Playfair Display',serif;font-size:4rem;color:var(--b6);font-weight:400;line-height:1;margin-bottom:0.5rem;}
+.hiw-sec h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--b1);margin-bottom:1rem;font-weight:400;line-height:1.2;}
+.hiw-sec p{font-size:0.86rem;color:var(--b3);line-height:1.8;font-weight:300;margin-bottom:1rem;}
+.hiw-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.hiw-bullets li{display:flex;align-items:flex-start;gap:0.7rem;font-size:0.82rem;color:var(--b3);font-weight:300;}
+.hiw-bullet-dot{width:18px;height:18px;border-radius:50%;background:var(--b6);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+
+/* EARN SECTION */
+.earn-section{display:grid;grid-template-columns:1fr 1fr;}
+.earn-l{background:var(--b1);padding:5rem 3.5rem;display:flex;flex-direction:column;justify-content:center;}
+.earn-l .slbl{color:var(--b5);}
+.earn-l .stitle{color:var(--b7);margin-bottom:1rem;font-size:2.1rem;}
+.earn-l p{font-size:0.86rem;color:var(--b5);line-height:1.8;font-weight:300;max-width:400px;margin-bottom:2rem;}
+.esteps{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2rem;}
+.estep{display:flex;align-items:flex-start;gap:1rem;}
+.estep-n{width:28px;height:28px;border-radius:50%;background:rgba(226,201,168,0.15);color:var(--b6);font-size:0.72rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.estep-t{font-size:0.8rem;color:var(--b5);line-height:1.6;}
+.estep-t strong{color:var(--b7);display:block;font-size:0.83rem;margin-bottom:0.12rem;}
+.earn-r{background:var(--b7);padding:5rem 3.5rem;display:flex;flex-direction:column;justify-content:center;}
+.calc-box{background:var(--b8);border-radius:20px;padding:2rem;border:0.5px solid var(--b6);margin-top:1rem;}
+.clbl{font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--b4);margin-bottom:0.4rem;display:block;}
+.cinput{width:100%;background:var(--b7);border:1.5px solid var(--b6);color:var(--b1);padding:0.72rem 1rem;font-family:'Playfair Display',serif;font-size:1.3rem;border-radius:12px;outline:none;margin-bottom:1.2rem;transition:border-color 0.2s;}
+.cinput:focus{border-color:var(--b4);}
+.drow{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.2rem;}
+.dopt{padding:0.58rem;text-align:center;border-radius:10px;border:1.5px solid var(--b6);font-size:0.74rem;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif;background:var(--b7);color:var(--b4);transition:all 0.18s;}
+.dopt.on{background:var(--b2);color:var(--b8);border-color:var(--b2);}
+.cres{background:var(--b6);border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--b5);}
+.cres-lbl{font-size:0.66rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--b3);margin-bottom:0.3rem;}
+.cres-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--b1);}
+.cres-note{font-size:0.7rem;color:var(--b4);margin-top:0.4rem;line-height:1.5;}
+
+/* TRUST */
+.trust-section{padding:5rem 3rem;background:var(--b7);}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
+.tcard{background:var(--b8);border-radius:18px;padding:2rem 1.6rem;border:0.5px solid var(--b6);transition:transform 0.2s;}
+.tcard:hover{transform:translateY(-3px);}
+.ticon{width:48px;height:48px;border-radius:14px;background:var(--b6);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.tcard h3{font-size:0.92rem;font-weight:600;color:var(--b1);margin-bottom:0.5rem;}
+.tcard p{font-size:0.8rem;color:var(--b3);line-height:1.7;font-weight:300;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(30,15,6,0.6);z-index:2000;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--b8);border-radius:24px;padding:2.5rem;max-width:440px;width:90%;position:relative;animation:modalIn 0.3s ease;}
+@keyframes modalIn{from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:scale(1);}}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:var(--b7);color:var(--b3);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.modal-logo{font-family:'Great Vibes',cursive;font-size:2.5rem;color:var(--b2);text-align:center;margin-bottom:0.3rem;}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--b1);text-align:center;margin-bottom:0.4rem;}
+.modal-sub{font-size:0.8rem;color:var(--b4);text-align:center;margin-bottom:1.8rem;font-weight:300;}
+.modal-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1.5rem;}
+.mtab{padding:0.6rem;text-align:center;border-radius:10px;border:1.5px solid var(--b6);font-size:0.8rem;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif;color:var(--b4);transition:all 0.2s;}
+.mtab.on{background:var(--b2);color:var(--b8);border-color:var(--b2);}
+.mform{display:flex;flex-direction:column;gap:1rem;}
+.mfield{display:flex;flex-direction:column;gap:0.3rem;}
+.mfield label{font-size:0.66rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--b3);}
+.mfield input{padding:0.7rem 1rem;border:1.5px solid var(--b6);border-radius:12px;font-family:'Montserrat',sans-serif;font-size:0.84rem;color:var(--b1);background:var(--b7);outline:none;transition:border-color 0.2s;}
+.mfield input:focus{border-color:var(--b4);}
+.modal-btn{width:100%;background:var(--b1);color:var(--b8);border:none;padding:0.9rem;border-radius:12px;font-size:0.86rem;font-family:'Montserrat',sans-serif;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.modal-btn:hover{background:var(--b2);}
+.modal-alt{text-align:center;font-size:0.76rem;color:var(--b4);margin-top:1rem;}
+.modal-alt span{color:var(--accent);cursor:pointer;font-weight:500;}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--b1);color:var(--b8);padding:1rem 1.5rem;border-radius:14px;font-size:0.82rem;font-weight:500;z-index:3000;transform:translateY(100px);opacity:0;transition:all 0.3s;max-width:300px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast-icon{margin-right:0.5rem;}
+
+/* FOOTER */
+.footer{background:var(--b1);padding:3.5rem 3rem 2rem;}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem;}
+.flogo{font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--b6);margin-bottom:0.8rem;}
+.fdesc{font-size:0.78rem;color:var(--b4);line-height:1.7;font-weight:300;max-width:240px;}
+.fcol h4{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--b5);margin-bottom:1rem;}
+.fcol a{display:block;font-size:0.78rem;color:var(--b4);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s;cursor:pointer;}
+.fcol a:hover{color:var(--b6);}
+.fbot{border-top:0.5px solid var(--b2);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.fcopy{font-size:0.72rem;color:var(--b3);}
+.fbadge{font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--b4);border:0.5px solid var(--b2);padding:0.32rem 0.9rem;border-radius:12px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;}
+  .hero-r{min-height:400px;}
+  .how-grid{grid-template-columns:repeat(2,1fr);}
+  .items-grid{grid-template-columns:repeat(2,1fr);}
+  .earn-section{grid-template-columns:1fr;}
+  .tgrid{grid-template-columns:1fr;}
+  .ftop{grid-template-columns:1fr 1fr;}
+  .item-detail-grid{grid-template-columns:1fr;}
+  .hiw-sec{grid-template-columns:1fr;}
+  .list-steps{grid-template-columns:1fr;}
+  .nav{padding:1rem 1.5rem;}
+  .listings-page,.list-page,.hiw-page,.item-detail{padding:1.5rem;}
+  .hero-l{padding:3rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <div class="nav-logo" onclick="showPage('home')">Shana</div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('browse');filterItems('all')" id="nav-browse">Browse</a></li>
+    <li><a onclick="showPage('browse');filterItems('women')" id="nav-women">Womenswear</a></li>
+    <li><a onclick="showPage('browse');filterItems('men')" id="nav-men">Menswear</a></li>
+    <li><a onclick="showPage('howitworks')" id="nav-hiw">How it works</a></li>
+    <li><a onclick="showPage('list')" id="nav-list">List your clothes</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <button class="btn-out" onclick="openModal('login')">Log in</button>
+    <button class="btn-fill" onclick="openModal('signup')">Sign up free</button>
+  </div>
+  <div class="hamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-l">
+      <div class="hero-tag"><div class="tag-dot"></div>UK wardrobe rental platform</div>
+      <div class="hero-logo">Shana</div>
+      <p class="hero-tagline">Rent beautiful clothes for any occasion.<br><strong>Buy pieces you love. Earn from your wardrobe.</strong><br>For everyone, everywhere in the UK.</p>
+      <div class="hero-btns">
+        <button class="btn-dark" onclick="showPage('browse');filterItems('women')">Browse womenswear</button>
+        <button class="btn-warm" onclick="showPage('browse');filterItems('men')">Browse menswear</button>
+      </div>
+      <div class="trust-row">
+        <div class="tchip"><div class="tdot"></div>Verified users</div>
+        <div class="tchip"><div class="tdot"></div>Secure payments</div>
+        <div class="tchip"><div class="tdot"></div>Free to join</div>
+        <div class="tchip"><div class="tdot"></div>UK-wide delivery</div>
+      </div>
+    </div>
+    <div class="hero-r">
+      <div class="hcard">
+        <div class="hcard-icon" style="background:var(--b7);">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3L11 19M5 7Q11 3 17 7" stroke="#3A1F0D" stroke-width="1.8" stroke-linecap="round"/><line x1="5" y1="19" x2="17" y2="19" stroke="#3A1F0D" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div><div class="hcard-title">Rent for any occasion</div><div class="hcard-sub">From £10/day · 1–7 days</div></div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon" style="background:var(--b6);">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M6 2h10l2 6H4L6 2z" stroke="#6B3A1F" stroke-width="1.5" fill="none" stroke-linejoin="round"/><rect x="3" y="8" width="16" height="12" rx="2" stroke="#6B3A1F" stroke-width="1.5"/><path d="M9 14l2 2 4-4" stroke="#6B3A1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><div class="hcard-title">Buy items you love</div><div class="hcard-sub">Purchase at a fair price</div></div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon" style="background:var(--b7);">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="3.5" stroke="#3A1F0D" stroke-width="1.5"/><path d="M4 19c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div><div class="hcard-title">Earn from your wardrobe</div><div class="hcard-sub">List in minutes · keep 90%</div></div>
+      </div>
+      <div class="hstats">
+        <div class="hstat"><div class="hstat-num">£10</div><div class="hstat-lbl">From/day</div></div>
+        <div class="hstat"><div class="hstat-num">90%</div><div class="hstat-lbl">You keep</div></div>
+        <div class="hstat"><div class="hstat-num">7</div><div class="hstat-lbl">Days max</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <div class="search-section">
+    <div class="sbar">
+      <div class="sseg"><span class="sseg-lbl">Category</span><span class="sseg-val" id="s-cat">All clothing</span></div>
+      <div class="sseg"><span class="sseg-lbl">Occasion</span><span class="sseg-val" id="s-occ">Any occasion</span></div>
+      <div class="sseg"><span class="sseg-lbl">Size</span><span class="sseg-val" id="s-size">Any size</span></div>
+      <div class="sseg" style="border-right:none;"><span class="sseg-lbl">Location</span><span class="sseg-val">Anywhere in UK</span></div>
+      <button class="sgo" onclick="showPage('browse');filterItems('all');showToast('🔍 Showing all listings')">Search</button>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS STRIP -->
+  <section class="how">
+    <span class="slbl" style="color:var(--b3);">How it works</span>
+    <h2 class="stitle">Simple from start to finish</h2>
+    <p class="ssub">Rent, buy or earn — Shana works for everyone. No complicated process, just great clothes at great prices.</p>
+    <div class="how-grid">
+      <div class="how-card"><div class="how-num" style="background:var(--b6);color:var(--b2);">1</div><h3>Create your account</h3><p>Sign up free in minutes. Verify your identity and you're ready to browse and rent.</p></div>
+      <div class="how-card"><div class="how-num" style="background:var(--b5);color:var(--b8);">2</div><h3>Browse & choose</h3><p>Filter by gender, size, occasion or price. Find exactly the outfit you need.</p></div>
+      <div class="how-card"><div class="how-num" style="background:var(--b4);color:var(--b8);">3</div><h3>Rent or buy</h3><p>Book for 1–7 days at a daily rate, or purchase outright if you fall in love with it.</p></div>
+      <div class="how-card"><div class="how-num" style="background:var(--b3);color:var(--b8);">4</div><h3>Wear & return</h3><p>Receive your item, enjoy it, return it clean. Payment releases once safely confirmed.</p></div>
+    </div>
+  </section>
+
+  <!-- FEATURED LISTINGS PREVIEW -->
+  <section class="listings-page" style="padding-top:0;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1rem;">
+      <div><span class="slbl" style="color:var(--accent);">Featured</span><h2 class="stitle" style="margin-bottom:0;font-size:1.9rem;">Trending right now</h2></div>
+      <button class="btn-out" onclick="showPage('browse');filterItems('all')">View all listings</button>
+    </div>
+    <div class="items-grid" id="home-items"></div>
+  </section>
+
+  <!-- EARN -->
+  <section class="earn-section">
+    <div class="earn-l">
+      <span class="slbl">For lenders</span>
+      <h2 class="stitle">Your wardrobe earns while you sleep</h2>
+      <p>List any item — dress, suit, jacket, trainers. You set the price. Shana handles everything else and you keep 90% of every rental.</p>
+      <div class="esteps">
+        <div class="estep"><div class="estep-n">1</div><div class="estep-t"><strong>Photograph your item</strong>Good lighting, a few angles — done in 5 mins.</div></div>
+        <div class="estep"><div class="estep-n">2</div><div class="estep-t"><strong>Set your rental & sale price</strong>Choose daily rate and optional buy-now price.</div></div>
+        <div class="estep"><div class="estep-n">3</div><div class="estep-t"><strong>Get paid automatically</strong>Money in your account after each rental. No chasing.</div></div>
+      </div>
+      <button class="btn-out" style="border-color:var(--b5);color:var(--b6);width:fit-content;" onclick="showPage('list')">Start listing today</button>
+    </div>
+    <div class="earn-r">
+      <span class="slbl" style="color:var(--accent);">Earnings calculator</span>
+      <h2 class="stitle" style="font-size:1.8rem;">How much could you earn?</h2>
+      <div class="calc-box">
+        <span class="clbl">Your daily rental price (£)</span>
+        <input class="cinput" type="number" id="cp" value="35" oninput="calc()"/>
+        <span class="clbl">Rental days per month</span>
+        <div class="drow" style="margin-top:0.5rem;">
+          <div class="dopt" onclick="setD(2,this)">2 days</div>
+          <div class="dopt on" onclick="setD(5,this)">5 days</div>
+          <div class="dopt" onclick="setD(10,this)">10 days</div>
+        </div>
+        <div class="cres">
+          <div class="cres-lbl">You earn per month</div>
+          <div class="cres-num" id="cr">£157</div>
+          <div class="cres-note">After Shana's 10% platform fee. Based on <span id="cd">5</span> days/month.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust-section">
+    <span class="slbl" style="color:var(--b3);">Why people trust Shana</span>
+    <h2 class="stitle">Safe, simple and transparent</h2>
+    <div class="tgrid">
+      <div class="tcard"><div class="ticon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3L4 7v5c0 4.5 3.3 8.7 8 9.9 4.7-1.2 8-5.4 8-9.9V7L12 3z" stroke="#3A1F0D" stroke-width="1.5"/></svg></div><h3>Verified identities</h3><p>Every user is identity-verified before they can rent or list. No anonymous accounts, ever.</p></div>
+      <div class="tcard"><div class="ticon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="#3A1F0D" stroke-width="1.5"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div><h3>Secure payments</h3><p>All payments are held safely until the item is returned. No money changes hands until both sides confirm.</p></div>
+      <div class="tcard"><div class="ticon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#3A1F0D" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Damage protection</h3><p>A deposit protects lenders from damage. Our team resolves disputes quickly and fairly for everyone.</p></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="ftop">
+      <div><div class="flogo">Shana</div><p class="fdesc">The UK's wardrobe rental platform. Rent, buy and earn from clothes — for everyone, everywhere.</p></div>
+      <div class="fcol"><h4>Explore</h4><a onclick="showPage('browse');filterItems('women')">Womenswear</a><a onclick="showPage('browse');filterItems('men')">Menswear</a><a onclick="showPage('browse');filterItems('occasion')">Occasionwear</a><a onclick="showPage('browse');filterItems('street')">Streetwear</a><a onclick="showPage('browse');filterItems('accessories')">Accessories</a></div>
+      <div class="fcol"><h4>Lenders</h4><a onclick="showPage('list')">List an item</a><a onclick="showPage('howitworks')">How pricing works</a><a onclick="showPage('howitworks')">Lender protection</a><a onclick="showPage('howitworks')">Payouts explained</a></div>
+      <div class="fcol"><h4>Company</h4><a onclick="showPage('howitworks')">About Shana</a><a onclick="showPage('howitworks')">How it works</a><a onclick="showToast('📧 Contact: hello@shana.co.uk')">Contact us</a><a onclick="showToast('🚀 Shana is coming soon to the App Store!')">Mobile app</a></div>
+    </div>
+    <div class="fbot"><div class="fcopy">© 2026 Shana · UK Wardrobe Rental · All rights reserved</div><div class="fbadge">Made in the UK</div></div>
+  </footer>
+</div>
+
+<!-- BROWSE PAGE -->
+<div class="page" id="page-browse">
+  <div class="listings-page">
+    <div class="listings-hero">
+      <div><h1>Browse Shana</h1><p>Rent or buy from hundreds of real wardrobes across the UK</p></div>
+      <button class="btn-fill" onclick="showPage('list')" style="white-space:nowrap;">+ List your clothes</button>
+    </div>
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <button class="ftab act" id="tab-all" onclick="filterItems('all');setTab('all')">All</button>
+      <button class="ftab" id="tab-women" onclick="filterItems('women');setTab('women')">Womenswear</button>
+      <button class="ftab" id="tab-men" onclick="filterItems('men');setTab('men')">Menswear</button>
+      <button class="ftab" id="tab-occasion" onclick="filterItems('occasion');setTab('occasion')">Occasionwear</button>
+      <button class="ftab" id="tab-street" onclick="filterItems('street');setTab('street')">Streetwear</button>
+      <button class="ftab" id="tab-accessories" onclick="filterItems('accessories');setTab('accessories')">Accessories</button>
+      <select class="sort-select" onchange="sortItems(this.value)">
+        <option value="default">Sort: Featured</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+      </select>
+    </div>
+    <div class="items-grid" id="browse-items"></div>
+  </div>
+  <footer class="footer">
+    <div class="ftop">
+      <div><div class="flogo">Shana</div><p class="fdesc">The UK's wardrobe rental platform.</p></div>
+      <div class="fcol"><h4>Explore</h4><a onclick="filterItems('women');setTab('women')">Womenswear</a><a onclick="filterItems('men');setTab('men')">Menswear</a><a onclick="filterItems('occasion');setTab('occasion')">Occasionwear</a></div>
+      <div class="fcol"><h4>Lenders</h4><a onclick="showPage('list')">List an item</a><a onclick="showPage('howitworks')">How it works</a></div>
+      <div class="fcol"><h4>Help</h4><a onclick="showPage('howitworks')">FAQs</a><a onclick="showToast('📧 hello@shana.co.uk')">Contact</a></div>
+    </div>
+    <div class="fbot"><div class="fcopy">© 2026 Shana · UK Wardrobe Rental</div><div class="fbadge">Made in the UK</div></div>
+  </footer>
+</div>
+
+<!-- ITEM DETAIL PAGE -->
+<div class="page" id="page-item">
+  <div class="item-detail">
+    <div class="back-btn" onclick="showPage('browse')">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="#6B3A1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to browse
+    </div>
+    <div class="item-detail-grid">
+      <div class="item-imgs">
+        <div class="item-main-img" id="detail-main-img" style="background:var(--b6);"></div>
+        <div class="item-thumbs" id="detail-thumbs"></div>
+      </div>
+      <div class="item-info-panel">
+        <div class="item-info-badge" id="detail-badge"></div>
+        <div class="item-info-name" id="detail-name"></div>
+        <div class="item-info-owner" id="detail-owner"></div>
+        <div class="item-price-row">
+          <div class="item-price-big" id="detail-price"></div>
+          <div class="item-price-day">per day</div>
+          <div class="item-price-buy" id="detail-buyprice"></div>
+        </div>
+        <div style="font-size:0.82rem;color:var(--b3);line-height:1.7;margin-bottom:1rem;font-weight:300;" id="detail-desc"></div>
+        <div class="item-divider"></div>
+        <div class="item-sizes-label">Select size</div>
+        <div class="sizes-row" id="detail-sizes"></div>
+        <div class="dates-row">
+          <div class="date-field"><label>Rent from</label><input type="date" id="rent-from" onchange="calcRental()"/></div>
+          <div class="date-field"><label>Return by</label><input type="date" id="rent-to" onchange="calcRental()"/></div>
+        </div>
+        <div class="total-box" id="total-box">
+          <div class="total-row"><span>Daily rate</span><span id="t-daily">£0</span></div>
+          <div class="total-row"><span>Number of days</span><span id="t-days">0</span></div>
+          <div class="total-row"><span>Refundable deposit</span><span id="t-deposit">£0</span></div>
+          <div class="total-row bold"><span>Total due now</span><span id="t-total">£0</span></div>
+        </div>
+        <button class="rent-big-btn" onclick="handleRent()">Rent this item</button>
+        <button class="buy-big-btn" id="buy-btn" onclick="handleBuy()">Buy outright</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS PAGE -->
+<div class="page" id="page-howitworks">
+  <div class="hiw-page">
+    <div class="hiw-hero">
+      <div class="hero-logo" style="font-family:'Great Vibes',cursive;font-size:4rem;color:var(--b2);">Shana</div>
+      <h1>How Shana works</h1>
+      <p>Whether you want to rent an outfit, buy something you love, or earn from clothes sitting in your wardrobe — here's everything you need to know.</p>
+    </div>
+    <div class="hiw-sections">
+      <div class="hiw-sec">
+        <div class="hiw-sec-img" style="background:var(--b6);">
+          <svg width="120" height="160" viewBox="0 0 120 160" fill="none"><circle cx="60" cy="55" r="30" fill="var(--b5)" stroke="var(--b4)" stroke-width="2"/><path d="M20 140c0-22.1 17.9-40 40-40s40 17.9 40 40" fill="var(--b5)" stroke="var(--b4)" stroke-width="2" stroke-linecap="round"/><circle cx="60" cy="55" r="16" fill="var(--b7)"/></svg>
+        </div>
+        <div>
+          <div class="hiw-sec-num">01</div>
+          <h2>Create your free account</h2>
+          <p>Sign up in minutes with just your email. We verify your identity to keep everyone on Shana safe. No subscription, no hidden fees — it's completely free to join.</p>
+          <ul class="hiw-bullets">
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Email or social sign-up</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>ID verification for trust & safety</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Set up your payment method securely</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hiw-sec rev">
+        <div class="hiw-sec-img" style="background:var(--b7);">
+          <svg width="140" height="160" viewBox="0 0 140 160" fill="none"><rect x="10" y="20" width="120" height="130" rx="12" fill="var(--b6)" stroke="var(--b5)" stroke-width="1.5"/><rect x="22" y="36" width="40" height="52" rx="8" fill="var(--b5)"/><rect x="70" y="36" width="40" height="24" rx="6" fill="var(--b5)"/><rect x="70" y="66" width="40" height="22" rx="6" fill="var(--b4)"/><rect x="22" y="96" width="88" height="14" rx="4" fill="var(--b5)"/><rect x="22" y="116" width="60" height="14" rx="4" fill="var(--b6)" stroke="var(--b5)" stroke-width="1"/></svg>
+        </div>
+        <div>
+          <div class="hiw-sec-num">02</div>
+          <h2>Browse & find your outfit</h2>
+          <p>Search through hundreds of real items listed by real people across the UK. Filter by gender, size, occasion, price or location. Every listing shows the daily rental price and buy-now option.</p>
+          <ul class="hiw-bullets">
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Filter by womenswear or menswear</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Choose 1–7 rental days</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>See total cost before you commit</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hiw-sec">
+        <div class="hiw-sec-img" style="background:var(--b6);">
+          <svg width="130" height="160" viewBox="0 0 130 160" fill="none"><rect x="15" y="30" width="100" height="110" rx="10" fill="var(--b5)" stroke="var(--b4)" stroke-width="1.5"/><rect x="30" y="50" width="70" height="40" rx="6" fill="var(--b7)"/><path d="M45 75l10 10 20-20" stroke="var(--b3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="30" y="100" width="70" height="10" rx="4" fill="var(--b6)"/><rect x="30" y="116" width="40" height="10" rx="4" fill="var(--b6)"/></svg>
+        </div>
+        <div>
+          <div class="hiw-sec-num">03</div>
+          <h2>Rent or buy with one click</h2>
+          <p>Select your size and dates, see the full cost including deposit, and confirm your booking. Payment is held securely — the lender only gets paid once you confirm you've received the item.</p>
+          <ul class="hiw-bullets">
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Rent for 1–7 days at daily rate</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Or buy the item outright</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Refundable deposit protects the lender</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hiw-sec rev">
+        <div class="hiw-sec-img" style="background:var(--b7);">
+          <svg width="130" height="160" viewBox="0 0 130 160" fill="none"><path d="M65 20 L65 140 M30 50 Q65 20 100 50" stroke="var(--b4)" stroke-width="3" stroke-linecap="round"/><line x1="20" y1="140" x2="110" y2="140" stroke="var(--b4)" stroke-width="3" stroke-linecap="round"/><rect x="42" y="70" width="46" height="60" rx="4" fill="var(--b5)" stroke="var(--b4)" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <div class="hiw-sec-num">04</div>
+          <h2>Wear it, return it clean</h2>
+          <p>Receive the item by post or collect locally. Wear it, enjoy it. When done, return it clean within the agreed dates. Once the lender confirms return, your deposit is released back to you.</p>
+          <ul class="hiw-bullets">
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Post or local collection & return</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Return clean within agreed dates</li>
+            <li><div class="hiw-bullet-dot"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#3A1F0D" stroke-width="1.5" stroke-linecap="round"/></svg></div>Deposit returned automatically</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;padding:4rem 2rem;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--b1);margin-bottom:1rem;font-weight:400;">Ready to get started?</h2>
+      <p style="font-size:0.88rem;color:var(--b4);margin-bottom:2rem;font-weight:300;">Join thousands of people renting and earning across the UK</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-dark" onclick="showPage('browse');filterItems('all')">Browse clothes</button>
+        <button class="btn-warm" onclick="showPage('list')">List your wardrobe</button>
+        <button class="btn-out" onclick="openModal('signup')">Sign up free</button>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="ftop">
+      <div><div class="flogo">Shana</div><p class="fdesc">The UK's wardrobe rental platform.</p></div>
+      <div class="fcol"><h4>Explore</h4><a onclick="showPage('browse');filterItems('women')">Womenswear</a><a onclick="showPage('browse');filterItems('men')">Menswear</a></div>
+      <div class="fcol"><h4>Lenders</h4><a onclick="showPage('list')">List an item</a></div>
+      <div class="fcol"><h4>Help</h4><a onclick="showToast('📧 hello@shana.co.uk')">Contact</a></div>
+    </div>
+    <div class="fbot"><div class="fcopy">© 2026 Shana · UK Wardrobe Rental</div><div class="fbadge">Made in the UK</div></div>
+  </footer>
+</div>
+
+<!-- LIST YOUR CLOTHES PAGE -->
+<div class="page" id="page-list">
+  <div class="list-page">
+    <div class="list-hero">
+      <h1>Shana</h1>
+      <p>Turn your wardrobe into income. List your clothes in minutes and start earning — you keep 90% of every rental.</p>
+    </div>
+    <div class="list-steps">
+      <div class="lstep"><div class="lstep-num" style="background:var(--b6);color:var(--b2);">1</div><h3>Photograph your item</h3><p>Take clear photos in good lighting. Front, back and any details. More photos = more bookings.</p></div>
+      <div class="lstep"><div class="lstep-num" style="background:var(--b5);color:var(--b8);">2</div><h3>Set your prices</h3><p>Choose a daily rental rate and an optional buy-now price. You're in full control.</p></div>
+      <div class="lstep"><div class="lstep-num" style="background:var(--b3);color:var(--b8);">3</div><h3>Get paid</h3><p>Receive bookings, hand over the item, get paid. Shana takes just 10% — you keep the rest.</p></div>
+    </div>
+    <div class="list-form-section">
+      <h2>List your item</h2>
+      <p>Fill in the details below and your item will be live on Shana within minutes.</p>
+      <div class="upload-area" onclick="showToast('📸 Photo upload coming soon — sign up to be notified!')">
+        <div class="upload-icon">📷</div>
+        <div class="upload-text">Click to upload photos</div>
+        <div class="upload-sub">JPG, PNG up to 10MB each · At least 2 photos required</div>
+      </div>
+      <div class="form-grid" style="margin-top:1.5rem;">
+        <div class="form-group full"><label>Item name</label><input type="text" placeholder="e.g. Silk wrap dress, Navy blazer set..."/></div>
+        <div class="form-group"><label>Category</label>
+          <select>
+            <option>Womenswear</option><option>Menswear</option><option>Occasionwear</option><option>Streetwear</option><option>Accessories</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Size</label>
+          <select><option>UK 6</option><option>UK 8</option><option>UK 10</option><option>UK 12</option><option>UK 14</option><option>UK 16</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+        </div>
+        <div class="form-group"><label>Daily rental price (£)</label><input type="number" placeholder="e.g. 25"/></div>
+        <div class="form-group"><label>Buy-now price (£) — optional</label><input type="number" placeholder="e.g. 80"/></div>
+        <div class="form-group"><label>Brand / Designer</label><input type="text" placeholder="e.g. Zara, ASOS, ARKET..."/></div>
+        <div class="form-group"><label>Condition</label>
+          <select><option>Like new</option><option>Excellent</option><option>Good</option><option>Fair</option></select>
+        </div>
+        <div class="form-group full"><label>Description</label><textarea placeholder="Describe the item — colour, fabric, fit, any details the renter should know..."></textarea></div>
+        <div class="form-group full"><label>Your location (for local collection)</label><input type="text" placeholder="e.g. London, Manchester, Birmingham..."/></div>
+      </div>
+      <button class="submit-btn" onclick="handleListSubmit()">List my item on Shana</button>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="ftop">
+      <div><div class="flogo">Shana</div><p class="fdesc">The UK's wardrobe rental platform.</p></div>
+      <div class="fcol"><h4>Explore</h4><a onclick="showPage('browse');filterItems('all')">Browse all</a></div>
+      <div class="fcol"><h4>Help</h4><a onclick="showPage('howitworks')">How it works</a><a onclick="showToast('📧 hello@shana.co.uk')">Contact</a></div>
+      <div class="fcol"><h4>Legal</h4><a onclick="showToast('Policies coming soon')">Privacy policy</a><a onclick="showToast('Policies coming soon')">Terms & conditions</a></div>
+    </div>
+    <div class="fbot"><div class="fcopy">© 2026 Shana · UK Wardrobe Rental</div><div class="fbadge">Made in the UK</div></div>
+  </footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-logo">Shana</div>
+    <div class="modal-title" id="modal-title">Welcome back</div>
+    <div class="modal-sub" id="modal-sub">Log in to your Shana account</div>
+    <div class="modal-tabs">
+      <div class="mtab on" id="mtab-login" onclick="switchModal('login')">Log in</div>
+      <div class="mtab" id="mtab-signup" onclick="switchModal('signup')">Sign up</div>
+    </div>
+    <div class="mform" id="modal-form-login">
+      <div class="mfield"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
+      <div class="mfield"><label>Password</label><input type="password" placeholder="••••••••"/></div>
+      <button class="modal-btn" onclick="handleLogin()">Log in to Shana</button>
+      <div class="modal-alt">Don't have an account? <span onclick="switchModal('signup')">Sign up free</span></div>
+    </div>
+    <div class="mform" id="modal-form-signup" style="display:none;">
+      <div class="mfield"><label>Full name</label><input type="text" placeholder="Your name"/></div>
+      <div class="mfield"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
+      <div class="mfield"><label>Password</label><input type="password" placeholder="Create a password"/></div>
+      <button class="modal-btn" onclick="handleSignup()">Create my Shana account</button>
+      <div class="modal-alt">Already have an account? <span onclick="switchModal('login')">Log in</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// DATA
+const items = [
+  {id:1,name:'Silk Wrap Dress',owner:'Priya · London',price:22,buyPrice:75,cat:'women',occasion:'occasionwear',size:'UK 10',rating:4.8,reviews:24,desc:'Beautiful ivory silk wrap dress, perfect for weddings, parties or dinners. Flows beautifully and flatters all body types. Dry clean only — collection bag provided.',bg:'#EDE0D0',badgeBg:'#E2C9A8',badgeColor:'#3A1F0D',badge:'Womenswear',deposit:30},
+  {id:2,name:'Navy Blazer Suit',owner:'James · Manchester',price:32,buyPrice:120,cat:'men',occasion:'occasionwear',size:'Size M',rating:4.9,reviews:18,desc:'Sharp navy two-piece suit. Great for interviews, weddings or formal dinners. Slim fit, well tailored. Comes with matching trousers.',bg:'#DDD0C4',badgeBg:'#C49A72',badgeColor:'#1E0F06',badge:'Menswear',deposit:45},
+  {id:3,name:'Satin Evening Gown',owner:'Sarah · Edinburgh',price:50,buyPrice:180,cat:'women',occasion:'occasionwear',size:'UK 8',rating:5.0,reviews:31,desc:'Stunning floor-length satin gown in deep burgundy. Perfect for black tie events, galas or formal occasions. Open back, fully lined.',bg:'#E8D8C8',badgeBg:'#E2C9A8',badgeColor:'#3A1F0D',badge:'Occasionwear',deposit:70},
+  {id:4,name:'Oversized Co-ord Set',owner:'Marcus · Birmingham',price:18,buyPrice:55,cat:'men',occasion:'streetwear',size:'Size L',rating:4.7,reviews:12,desc:'Relaxed caramel-toned co-ord set. Oversized hoodie and joggers. Perfect for casual days or street style looks.',bg:'#DDD0C4',badgeBg:'#C49A72',badgeColor:'#1E0F06',badge:'Streetwear',deposit:25},
+  {id:5,name:'Linen Midi Skirt',owner:'Aisha · Leeds',price:15,buyPrice:45,cat:'women',occasion:'casual',size:'UK 12',rating:4.6,reviews:9,desc:'Relaxed linen midi skirt in warm sand tone. Effortlessly chic for brunches, work or casual outings. Elastic waist, very comfortable.',bg:'#EDE0D0',badgeBg:'#E2C9A8',badgeColor:'#3A1F0D',badge:'Womenswear',deposit:20},
+  {id:6,name:'Cream Turtleneck',owner:'Tom · Bristol',price:12,buyPrice:38,cat:'men',occasion:'casual',size:'Size S',rating:4.5,reviews:7,desc:'Soft ribbed turtleneck in off-white. Wardrobe essential for layering or wearing alone. Machine washable merino blend.',bg:'#DDD0C4',badgeBg:'#C49A72',badgeColor:'#1E0F06',badge:'Menswear',deposit:15},
+  {id:7,name:'Floral Maxi Dress',owner:'Chloe · Brighton',price:20,buyPrice:65,cat:'women',occasion:'casual',size:'UK 10',rating:4.8,reviews:22,desc:'Gorgeous flowing floral maxi in warm tones. Great for festivals, garden parties or summer holidays. Light and breathable fabric.',bg:'#EDE0D0',badgeBg:'#E2C9A8',badgeColor:'#3A1F0D',badge:'Womenswear',deposit:28},
+  {id:8,name:'Brown Leather Jacket',owner:'Ravi · London',price:28,buyPrice:150,cat:'men',occasion:'streetwear',size:'Size M',rating:4.9,reviews:16,desc:'Premium tan leather jacket. Timeless biker silhouette. Goes with everything. Real leather, butter soft.',bg:'#DDD0C4',badgeBg:'#C49A72',badgeColor:'#1E0F06',badge:'Streetwear',deposit:60},
+  {id:9,name:'Wedding Guest Dress',owner:'Emma · Oxford',price:40,buyPrice:130,cat:'women',occasion:'occasionwear',size:'UK 14',rating:5.0,reviews:28,desc:'Elegant dusty rose chiffon dress, tea-length. Perfect wedding guest outfit. Fully lined, has pockets!',bg:'#EDE0D0',badgeBg:'#E2C9A8',badgeColor:'#3A1F0D',badge:'Occasionwear',deposit:55},
+  {id:10,name:'Tan Chelsea Boots',owner:'Liam · Glasgow',price:16,buyPrice:80,cat:'accessories',occasion:'accessories',size:'UK 10',rating:4.7,reviews:11,desc:'Classic tan Chelsea boots. Worn twice. Genuine leather upper, rubber sole. Great for smart-casual looks.',bg:'#DDD0C4',badgeBg:'#C49A72',badgeColor:'#1E0F06',badge:'Accessories',deposit:30},
+  {id:11,name:'Structured Handbag',owner:'Nina · Liverpool',price:22,buyPrice:90,cat:'accessories',occasion:'accessories',size:'One size',rating:4.8,reviews:14,desc:'Chic structured top-handle bag in cognac leather. Gold hardware. Fits essentials and a small tablet.',bg:'#EDE0D0',badgeBg:'#E2C9A8',badgeColor:'#3A1F0D',badge:'Accessories',deposit:35},
+  {id:12,name:'Tweed Blazer',owner:'Sophie · Cambridge',price:24,buyPrice:95,cat:'women',occasion:'casual',size:'UK 10',rating:4.6,reviews:8,desc:'Chic caramel tweed blazer. Perfect for a smart-casual look, office or brunch. Lined interior, structured shoulders.',bg:'#EDE0D0',badgeBg:'#E2C9A8',badgeColor:'#3A1F0D',badge:'Womenswear',deposit:35},
+];
+
+let currentFilter='all';
+let currentItem=null;
+let calcDays=5;
+
+function getFilteredItems(filter){
+  if(filter==='all') return items;
+  if(filter==='women') return items.filter(i=>i.cat==='women');
+  if(filter==='men') return items.filter(i=>i.cat==='men');
+  if(filter==='occasion') return items.filter(i=>i.occasion==='occasionwear');
+  if(filter==='street') return items.filter(i=>i.occasion==='streetwear');
+  if(filter==='accessories') return items.filter(i=>i.cat==='accessories');
+  return items;
+}
+
+function renderCard(item){
+  return `<div class="icard" onclick="openItem(${item.id})">
+    <div class="iimg" style="background:${item.bg};">
+      <div class="ibadge" style="background:${item.badgeBg};color:${item.badgeColor};">${item.badge}</div>
+      <div class="iheart" onclick="event.stopPropagation();toggleHeart(this)">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 12S1.5 8 1.5 4.5a3 3 0 015.5-1.5A3 3 0 0112.5 4.5C12.5 8 7 12 7 12z" stroke="#C49A72" stroke-width="1.2"/></svg>
+      </div>
+      <svg width="78" height="110" viewBox="0 0 78 110" fill="none">
+        <path d="M29 14 L19 40 L14 100 L64 100 L59 40 L49 14 Z" fill="${item.cat==='men'?'#A67C52':'#C9A87C'}" stroke="#7A4A2A" stroke-width="1"/>
+        <path d="M14 100 L9 110 L69 110 L64 100" fill="${item.cat==='men'?'#A67C52':'#C9A87C'}" stroke="#7A4A2A" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="ibody">
+      <div class="iname">${item.name}</div>
+      <div class="iowner">By ${item.owner}</div>
+      <div class="irating">
+        ${'★'.repeat(Math.floor(item.rating))}<span class="irating-count">(${item.reviews})</span>
+      </div>
+      <div class="ifooter">
+        <div class="iprice">£${item.price} <span>/ day</span></div>
+        <div class="isize">${item.size}</div>
+      </div>
+      <button class="irbtn" onclick="event.stopPropagation();openItem(${item.id})">Rent now</button>
+    </div>
+  </div>`;
+}
+
+function filterItems(filter){
+  currentFilter=filter;
+  const filtered=getFilteredItems(filter);
+  const browseEl=document.getElementById('browse-items');
+  if(browseEl) browseEl.innerHTML=filtered.map(renderCard).join('');
+}
+
+function sortItems(val){
+  let sorted=[...getFilteredItems(currentFilter)];
+  if(val==='price-low') sorted.sort((a,b)=>a.price-b.price);
+  if(val==='price-high') sorted.sort((a,b)=>b.price-a.price);
+  if(val==='rating') sorted.sort((a,b)=>b.rating-a.rating);
+  const browseEl=document.getElementById('browse-items');
+  if(browseEl) browseEl.innerHTML=sorted.map(renderCard).join('');
+}
+
+function setTab(t){
+  document.querySelectorAll('.ftab').forEach(el=>el.classList.remove('act','act-w'));
+  const el=document.getElementById('tab-'+t);
+  if(el) el.classList.add('act');
+}
+
+function toggleHeart(el){
+  const svg=el.querySelector('svg path');
+  if(svg.getAttribute('fill')==='#C49A72'){svg.setAttribute('fill','none');showToast('Removed from wishlist');}
+  else{svg.setAttribute('fill','#C49A72');showToast('❤️ Added to wishlist!');}
+}
+
+function openItem(id){
+  currentItem=items.find(i=>i.id===id);
+  if(!currentItem) return;
+  document.getElementById('detail-name').textContent=currentItem.name;
+  document.getElementById('detail-owner').textContent='Listed by '+currentItem.owner;
+  document.getElementById('detail-price').textContent='£'+currentItem.price;
+  document.getElementById('detail-buyprice').textContent='or buy for £'+currentItem.buyPrice;
+  document.getElementById('detail-desc').textContent=currentItem.desc;
+  document.getElementById('detail-badge').textContent=currentItem.badge;
+  document.getElementById('detail-badge').style.cssText=`background:${currentItem.badgeBg};color:${currentItem.badgeColor};`;
+  document.getElementById('detail-main-img').style.background=currentItem.bg;
+  document.getElementById('detail-main-img').innerHTML=`<svg width="120" height="160" viewBox="0 0 120 160" fill="none"><path d="M44 20 L28 62 L20 150 L100 150 L92 62 L76 20 Z" fill="${currentItem.cat==='men'?'#A67C52':'#C9A87C'}" stroke="#7A4A2A" stroke-width="1.5"/><path d="M20 150 L12 160 L108 160 L100 150" fill="${currentItem.cat==='men'?'#A67C52':'#C9A87C'}" stroke="#7A4A2A" stroke-width="1.5"/></svg>`;
+  const sizes=currentItem.size.includes('UK')?['UK 6','UK 8','UK 10','UK 12','UK 14']:['XS','S','M','L','XL'];
+  document.getElementById('detail-sizes').innerHTML=sizes.map((s,i)=>`<button class="size-btn${s===currentItem.size?' sel':''}" onclick="selectSize(this)">${s}</button>`).join('');
+  const thumbs=document.getElementById('detail-thumbs');
+  thumbs.innerHTML=[currentItem.bg,'#E2C9A8','#C49A72'].map((c,i)=>`<div class="item-thumb${i===0?' active':''}" style="background:${c};" onclick="selectThumb(this,'${c}')"></div>`).join('');
+  document.getElementById('rent-from').value='';
+  document.getElementById('rent-to').value='';
+  document.getElementById('t-daily').textContent='£'+currentItem.price;
+  document.getElementById('t-days').textContent='0';
+  document.getElementById('t-deposit').textContent='£'+currentItem.deposit;
+  document.getElementById('t-total').textContent='£'+currentItem.deposit;
+  showPage('item');
+}
+
+function selectSize(el){document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}
+function selectThumb(el,color){document.querySelectorAll('.item-thumb').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.getElementById('detail-main-img').style.background=color;}
+
+function calcRental(){
+  if(!currentItem) return;
+  const from=document.getElementById('rent-from').value;
+  const to=document.getElementById('rent-to').value;
+  if(!from||!to) return;
+  const d=Math.max(1,Math.round((new Date(to)-new Date(from))/(1000*60*60*24)));
+  const rental=d*currentItem.price;
+  const total=rental+currentItem.deposit;
+  document.getElementById('t-days').textContent=d;
+  document.getElementById('t-total').textContent='£'+total;
+}
+
+function handleRent(){openModal('login');showToast('Please log in to complete your rental booking');}
+function handleBuy(){openModal('login');showToast('Please log in to purchase this item');}
+
+// CALC
+function setD(n,el){calcDays=n;document.querySelectorAll('.dopt').forEach(d=>d.classList.remove('on'));el.classList.add('on');calc();}
+function calc(){
+  const p=parseFloat(document.getElementById('cp')?.value)||0;
+  const r=document.getElementById('cr');
+  const cd=document.getElementById('cd');
+  if(r) r.textContent='£'+Math.round(p*calcDays*0.9);
+  if(cd) cd.textContent=calcDays;
+}
+
+// PAGES
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const navMap={home:'nav-home',browse:'nav-browse',howitworks:'nav-hiw',list:'nav-list',item:'nav-browse'};
+  const el=document.getElementById(navMap[name]);
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='home') renderHomeItems();
+  if(name==='browse') filterItems(currentFilter);
+}
+
+function renderHomeItems(){
+  const el=document.getElementById('home-items');
+  if(el) el.innerHTML=items.slice(0,4).map(renderCard).join('');
+}
+
+// MODAL
+function openModal(type){
+  document.getElementById('modal').classList.add('open');
+  switchModal(type);
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+function closeModalOutside(e){if(e.target.id==='modal') closeModal();}
+function switchModal(type){
+  document.getElementById('mtab-login').classList.toggle('on',type==='login');
+  document.getElementById('mtab-signup').classList.toggle('on',type==='signup');
+  document.getElementById('modal-form-login').style.display=type==='login'?'flex':'none';
+  document.getElementById('modal-form-signup').style.display=type==='signup'?'flex':'none';
+  document.getElementById('modal-title').textContent=type==='login'?'Welcome back':'Join Shana';
+  document.getElementById('modal-sub').textContent=type==='login'?'Log in to your Shana account':'Create your free account today';
+}
+function handleLogin(){closeModal();showToast('👋 Welcome back to Shana!');}
+function handleSignup(){closeModal();showToast('🎉 Welcome to Shana! Check your email to verify your account.');}
+function handleListSubmit(){showToast('🎉 Your item has been listed on Shana! It will go live once verified.');}
+
+// TOAST
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);
+});
+
+function toggleMobileMenu(){showToast('Mobile menu — tap a page link in the nav!');}
+
+// INIT
+renderHomeItems();
+calc();
+</script>
+</body>
+</html>
