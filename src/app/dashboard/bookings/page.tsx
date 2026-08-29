@@ -62,14 +62,15 @@ export default async function DashboardBookingsPage() {
         Manage bookings on your listed items.
       </p>
 
-      <BookingTabs tabs={tabs}>
-        {(activeTab) => {
-          if (activeTab === "pending") return renderList(pending);
-          if (activeTab === "active") return renderList(active);
-          if (activeTab === "completed") return renderList(completed);
-          return renderList(rejected);
+      <BookingTabs
+        tabs={tabs}
+        content={{
+          pending: renderList(pending),
+          active: renderList(active),
+          completed: renderList(completed),
+          rejected: renderList(rejected),
         }}
-      </BookingTabs>
+      />
     </div>
   );
 }

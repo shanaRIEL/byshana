@@ -73,14 +73,15 @@ export default async function RentBookingsPage() {
           Track your rental bookings and history.
         </p>
 
-        <BookingTabs tabs={tabs}>
-          {(activeTab) => {
-            if (activeTab === "upcoming") return renderList(upcoming);
-            if (activeTab === "active") return renderList(active);
-            if (activeTab === "completed") return renderList(completed, true);
-            return renderList(cancelled);
+        <BookingTabs
+          tabs={tabs}
+          content={{
+            upcoming: renderList(upcoming),
+            active: renderList(active),
+            completed: renderList(completed, true),
+            cancelled: renderList(cancelled),
           }}
-        </BookingTabs>
+        />
       </div>
 
       <div className="mt-16">

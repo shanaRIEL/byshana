@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#E8D8C8"/>
+  <rect x="50" y="50" width="500" height="700" rx="20" fill="#C9A87C" opacity="0.3"/>
+  <text x="300" y="380" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#3A1F0D" text-anchor="middle">ACCESSORIES</text>
+  <text x="300" y="440" font-family="Arial, sans-serif" font-size="24" fill="#5C3D1E" text-anchor="middle">Sample Image</text>
+  <circle cx="300" cy="520" r="35" fill="none" stroke="#3A1F0D" stroke-width="4" opacity="0.3"/>
+  <circle cx="300" cy="520" r="15" fill="#3A1F0D" opacity="0.2"/>
+</svg>

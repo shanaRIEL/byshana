@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#E8D8C8"/>
+  <rect x="50" y="50" width="500" height="700" rx="20" fill="#D4B896" opacity="0.3"/>
+  <text x="300" y="380" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#3A1F0D" text-anchor="middle">WOMENSWEAR</text>
+  <text x="300" y="440" font-family="Arial, sans-serif" font-size="24" fill="#5C3D1E" text-anchor="middle">Alternate View</text>
+  <ellipse cx="300" cy="520" rx="45" ry="55" fill="#3A1F0D" opacity="0.12"/>
+  <path d="M275 490 Q300 450 325 490 Q325 550 300 570 Q275 550 275 490" fill="#3A1F0D" opacity="0.25"/>
+</svg>

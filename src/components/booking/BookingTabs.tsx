@@ -4,10 +4,10 @@ import { useState } from "react";
 
 interface BookingTabsProps {
   tabs: { key: string; label: string; count: number }[];
-  children: (activeTab: string) => React.ReactNode;
+  content: Record<string, React.ReactNode>;
 }
 
-export default function BookingTabs({ tabs, children }: BookingTabsProps) {
+export default function BookingTabs({ tabs, content }: BookingTabsProps) {
   const [active, setActive] = useState(tabs[0]?.key ?? "");
 
   return (
@@ -32,7 +32,7 @@ export default function BookingTabs({ tabs, children }: BookingTabsProps) {
           </button>
         ))}
       </div>
-      {children(active)}
+      {content[active]}
     </div>
   );
 }

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#B8A898"/>
+  <rect x="50" y="50" width="500" height="700" rx="20" fill="#7A6548" opacity="0.3"/>
+  <text x="300" y="380" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#3A1F0D" text-anchor="middle">STREETWEAR</text>
+  <text x="300" y="440" font-family="Arial, sans-serif" font-size="24" fill="#5C3D1E" text-anchor="middle">Alternate View</text>
+  <rect x="240" y="480" width="120" height="70" rx="12" fill="#3A1F0D" opacity="0.15"/>
+  <line x1="255" y1="500" x2="345" y2="500" stroke="#3A1F0D" stroke-width="3" opacity="0.35"/>
+  <line x1="255" y1="520" x2="325" y2="520" stroke="#3A1F0D" stroke-width="3" opacity="0.35"/>
+  <line x1="255" y1="540" x2="295" y2="540" stroke="#3A1F0D" stroke-width="3" opacity="0.35"/>
+</svg>
