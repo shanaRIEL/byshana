@@ -1,5 +1,6 @@
 import { ListingStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import type { DbListing } from "@/types";
 
 export interface CreateListingData {
   title: string;
@@ -113,7 +114,7 @@ export async function getListings({
   brand?: string;
   minPrice?: number;
   maxPrice?: number;
-} = {}) {
+} = {}): Promise<{ listings: DbListing[]; total: number; page: number; limit: number; totalPages: number }> {
   const where: Record<string, unknown> = {
     status: "ACTIVE" as ListingStatus,
     isAvailable: true,
