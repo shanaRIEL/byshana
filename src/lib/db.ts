@@ -306,7 +306,7 @@ export async function isListingWishlisted(userId: string, listingId: string) {
   return !!entry;
 }
 
-export async function getUserWishlistIds(userId: string) {
+export async function getUserWishlistIds(userId: string): Promise<Set<string>> {
   const entries = await prisma.wishlist.findMany({
     where: { userId },
     select: { listingId: true },
