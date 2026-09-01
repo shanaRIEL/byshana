@@ -61,6 +61,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
     listing.images
   );
   const [newImages, setNewImages] = useState<NewImagePreview[]>([]);
+  const [removedImageIds, setRemovedImageIds] = useState<string[]>([]);
 
   const totalImages = existingImages.length + newImages.length;
 
@@ -181,6 +182,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
 
   const removeExistingImage = (imageId: string) => {
     setExistingImages((prev) => prev.filter((img) => img.id !== imageId));
+    setRemovedImageIds((prev) => [...prev, imageId]);
   };
 
   const removeNewImage = (index: number) => {
@@ -217,6 +219,14 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         return;
       }
 
+      const imageOrder = [
+        ...existingImages.map((img, i) => ({ id: img.id, url: img.url, order: i })),
+        ...uploadedUrls.map((u, i) => ({
+          url: u.url,
+          order: existingImages.length + i,
+        })),
+      ];
+
       const result = await updateListingAction(listing.id, {
         title: data.title,
         description: data.description,
@@ -229,6 +239,8 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         deposit: data.deposit,
         location: data.location,
         occasion: data.occasion || undefined,
+        images: imageOrder,
+        removedImageIds: removedImageIds.length > 0 ? removedImageIds : undefined,
       });
 
       if (result.success) {

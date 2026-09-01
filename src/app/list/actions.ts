@@ -121,7 +121,7 @@ export async function getListingsByUserAction() {
 
 export async function updateListingAction(
   id: string,
-  data: Parameters<typeof updateListing>[1]
+  data: Parameters<typeof updateListing>[1] & { removedImageIds?: string[] }
 ): Promise<{ success: boolean; error?: string; data?: { id: string } }> {
   try {
     const user = await resolvePrismaUser();
@@ -137,7 +137,30 @@ export async function updateListingAction(
       return { success: false, error: "You can only edit your own listings" };
     }
 
-    const listing = await updateListing(id, data);
+    const { removedImageIds, ...updateData } = data;
+
+    const listing = await updateListing(id, updateData);
+
+    if (removedImageIds && removedImageIds.length > 0) {
+      const removedImages = (existing.images ?? []).filter((img) =>
+        removedImageIds.includes(img.id)
+      );
+      for (const img of removedImages) {
+        try {
+          const parts = img.url.split("/upload/");
+          if (parts.length === 2) {
+            let publicId = parts[1];
+            const dotIndex = publicId.lastIndexOf(".");
+            if (dotIndex > 0) {
+              publicId = publicId.substring(0, dotIndex);
+            }
+            await cloudinary.uploader.destroy(publicId);
+          }
+        } catch {
+          // Cloudinary deletion failed silently
+        }
+      }
+    }
 
     revalidatePath("/");
     revalidatePath("/browse");

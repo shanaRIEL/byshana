@@ -127,13 +127,13 @@ export default function Hero() {
 
         <div className="flex gap-3.5 flex-wrap mb-8">
           <Link
-            href="/browse?filter=women"
+            href="/browse?category=women"
             className="bg-b1 text-b8 border-none py-[0.82rem] px-[1.9rem] rounded-[28px] text-[0.8rem] font-montserrat font-medium no-underline transition-colors duration-200 hover:bg-b2"
           >
             Browse womenswear
           </Link>
           <Link
-            href="/browse?filter=men"
+            href="/browse?category=men"
             className="bg-accent text-b8 border-none py-[0.82rem] px-[1.9rem] rounded-[28px] text-[0.8rem] font-montserrat font-medium no-underline transition-colors duration-200 hover:bg-b3"
           >
             Browse menswear

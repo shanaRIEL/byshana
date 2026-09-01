@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { FooterColumn } from "@/types";
 
 const ACTION_MAP: Record<string, string> = {
-  "browse-women": "/browse?filter=women",
-  "browse-men": "/browse?filter=men",
-  "browse-occasion": "/browse?filter=occasion",
-  "browse-street": "/browse?filter=street",
-  "browse-accessories": "/browse?filter=accessories",
+  "browse-women": "/browse?category=women",
+  "browse-men": "/browse?category=men",
+  "browse-occasion": "/browse?category=occasion",
+  "browse-street": "/browse?category=street",
+  "browse-accessories": "/browse?category=accessories",
   browse: "/browse",
   list: "/list",
   "how-it-works": "/how-it-works",

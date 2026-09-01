@@ -23,8 +23,8 @@ export default function Navbar({ showToast }: NavbarProps) {
   const links = [
     { label: "Home", href: "/" },
     { label: "Browse", href: "/browse" },
-    { label: "Womenswear", href: "/browse?filter=women" },
-    { label: "Menswear", href: "/browse?filter=men" },
+    { label: "Womenswear", href: "/browse?category=women" },
+    { label: "Menswear", href: "/browse?category=men" },
     { label: "How it works", href: "/how-it-works" },
     { label: "List your clothes", href: "/list" },
   ];

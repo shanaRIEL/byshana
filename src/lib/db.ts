@@ -30,6 +30,7 @@ export interface UpdateListingData {
   location?: string;
   occasion?: string;
   status?: ListingStatus;
+  images?: { id?: string; url: string; order: number }[];
 }
 
 export async function createListing(data: CreateListingData) {
@@ -213,9 +214,43 @@ export async function getListingsByUser(ownerId: string) {
 }
 
 export async function updateListing(id: string, data: UpdateListingData) {
+  const { images, ...listingData } = data;
+
+  if (images !== undefined) {
+    const currentImages = await prisma.listingImage.findMany({
+      where: { listingId: id },
+      select: { id: true },
+    });
+
+    const currentIds = new Set(currentImages.map((img) => img.id));
+    const incomingIds = new Set(images.filter((img) => img.id).map((img) => img.id!));
+
+    const toDelete = currentImages.filter((img) => !incomingIds.has(img.id));
+
+    await prisma.$transaction([
+      ...(toDelete.length > 0
+        ? [
+            prisma.listingImage.deleteMany({
+              where: { id: { in: toDelete.map((img) => img.id) } },
+            }),
+          ]
+        : []),
+      ...images.map((img) =>
+        img.id
+          ? prisma.listingImage.update({
+              where: { id: img.id },
+              data: { order: img.order },
+            })
+          : prisma.listingImage.create({
+              data: { url: img.url, order: img.order, listingId: id },
+            })
+      ),
+    ]);
+  }
+
   return prisma.listing.update({
     where: { id },
-    data,
+    data: listingData,
     include: {
       owner: {
         select: { id: true, name: true, image: true },
