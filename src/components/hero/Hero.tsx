@@ -105,13 +105,13 @@ const stats = [
 export default function Hero() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[88vh]">
-      <div className="bg-b8 flex flex-col justify-center py-20 px-14 max-[900px]:px-6">
+      <div className="bg-b8 flex flex-col justify-center py-12 sm:py-20 px-6 md:px-14">
         <div className="inline-flex items-center gap-[6px] bg-b7 text-b3 text-[0.68rem] font-medium tracking-[0.1em] uppercase py-[0.32rem] px-4 rounded-[20px] mb-6 w-fit border border-b6/50">
           <span className="w-[6px] h-[6px] rounded-full bg-b4" />
           UK wardrobe rental platform
         </div>
 
-        <div className="font-great-vibes text-[6.5rem] text-b2 leading-none mb-1.5">
+        <div className="font-great-vibes text-[3.5rem] sm:text-[5rem] md:text-[6.5rem] text-b2 leading-none mb-1.5 break-words">
            Your-Wardrobe
         </div>
 
