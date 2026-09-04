@@ -74,7 +74,7 @@ export default function Navbar({ showToast }: NavbarProps) {
           href="/"
           className="font-great-vibes text-[1.8rem] md:text-[2.2rem] text-b2 no-underline"
         >
-          Shana
+          ByShana
         </Link>
 
         <ul className="hidden md:flex gap-7 list-none items-center">
@@ -164,7 +164,7 @@ export default function Navbar({ showToast }: NavbarProps) {
         className={`fixed top-0 right-0 h-full w-[280px] max-w-[85vw] bg-b8 border-l border-b6 z-[1000] md:hidden transform transition-transform duration-300 ease-in-out ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-b6">
-          <span className="font-great-vibes text-[1.8rem] text-b2">Shana</span>
+          <span className="font-great-vibes text-[1.8rem] text-b2">ByShana</span>
           <button
             className="flex flex-col justify-center gap-[5px] cursor-pointer p-2 bg-transparent border-none"
             onClick={() => setMobileOpen(false)}
