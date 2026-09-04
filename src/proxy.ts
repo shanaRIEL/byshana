@@ -15,22 +15,25 @@ const isPublicRoute = createRouteMatcher([
 const isDashboardRoute = createRouteMatcher(["/list(.*)", "/dashboard(.*)"]);
 const isAuthRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
 
-export default clerkMiddleware(async (auth, request) => {
-  if (isAuthRoute(request)) {
-    const authObj = await auth();
-    if (authObj.userId) {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+export default clerkMiddleware(
+  async (auth, request) => {
+    if (isAuthRoute(request)) {
+      const authObj = await auth();
+      if (authObj.userId) {
+        return NextResponse.redirect(new URL("/dashboard", request.url));
+      }
     }
-  }
 
-  if (isDashboardRoute(request)) {
-    await auth.protect();
-  }
+    if (isDashboardRoute(request)) {
+      await auth.protect();
+    }
 
-  if (!isPublicRoute(request)) {
-    await auth.protect();
-  }
-});
+    if (!isPublicRoute(request)) {
+      await auth.protect();
+    }
+  },
+  { frontendApiProxy: { enabled: true } },
+);
 
 export const config = {
   matcher: [
