@@ -112,7 +112,7 @@ export default function Hero() {
         </div>
 
         <div className="font-great-vibes text-[6.5rem] text-b2 leading-none mb-1.5">
-          Shana
+           Your-Wardrobe
         </div>
 
         <p className="text-[1rem] font-light text-b3 leading-[1.85] max-w-[420px] mb-8">
