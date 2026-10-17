@@ -82,13 +82,13 @@ export default function FilterPanel() {
     !!searchParams.get("maxPrice");
 
   const inputClasses =
-    "py-2 px-3 border-[1.5px] border-b6 rounded-[10px] font-montserrat text-[0.78rem] text-b1 bg-b7 outline-none transition-colors duration-200 focus:border-b4 w-full";
+    "py-2.5 px-3 border border-line rounded-none font-montserrat text-[0.78rem] text-ink bg-white outline-none transition-colors duration-200 focus:border-ink/40 w-full";
   const labelClasses =
-    "text-[0.62rem] font-semibold tracking-[0.08em] uppercase text-b3 font-montserrat";
+    "text-[0.6rem] font-semibold tracking-[0.18em] uppercase text-ink/50 font-montserrat";
 
   return (
-    <div className="flex flex-col gap-5">
-      <form onSubmit={handleSearch} className="flex gap-2">
+    <div className="flex flex-col gap-6">
+      <form onSubmit={handleSearch} className="flex gap-0">
         <input
           type="text"
           value={search}
@@ -98,7 +98,7 @@ export default function FilterPanel() {
         />
         <button
           type="submit"
-          className="px-5 py-2 bg-b1 text-b8 font-montserrat text-[0.78rem] font-semibold rounded-[10px] hover:bg-b2 transition-colors cursor-pointer"
+          className="px-5 py-2.5 bg-ink text-b8 border border-ink font-montserrat text-[0.64rem] font-semibold tracking-[0.14em] uppercase hover:bg-transparent hover:text-ink transition-colors cursor-pointer"
         >
           Search
         </button>
@@ -106,15 +106,15 @@ export default function FilterPanel() {
 
       <div>
         <p className={labelClasses}>Category</p>
-        <div className="flex flex-wrap gap-1.5 mt-1.5">
+        <div className="flex flex-wrap gap-1.5 mt-2.5">
           {categories.map((c) => (
             <button
               key={c.value}
               onClick={() => applyParams("category", c.value)}
-              className={`px-3 py-1.5 rounded-full text-[0.72rem] font-montserrat font-medium border transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 rounded-none text-[0.68rem] font-montserrat font-medium tracking-[0.06em] uppercase border transition-colors cursor-pointer ${
                 activeCategory === c.value
-                  ? "bg-b1 text-b8 border-b1"
-                  : "bg-transparent text-b4 border-b6 hover:border-b4"
+                  ? "bg-ink text-b8 border-ink"
+                  : "bg-transparent text-ink/55 border-line hover:border-ink/40 hover:text-ink"
               }`}
             >
               {c.label}
@@ -130,7 +130,7 @@ export default function FilterPanel() {
           value={activeBrand}
           onChange={(e) => applyParams("brand", e.target.value)}
           placeholder="e.g. Zara, H&M"
-          className={`${inputClasses} mt-1.5`}
+          className={`${inputClasses} mt-2.5`}
         />
       </div>
 
@@ -140,7 +140,7 @@ export default function FilterPanel() {
           <select
             value={activeSize}
             onChange={(e) => applyParams("size", e.target.value)}
-            className={`${inputClasses} mt-1.5`}
+            className={`${inputClasses} mt-2.5`}
           >
             <option value="">All sizes</option>
             {listingSizes.map((s) => (
@@ -155,7 +155,7 @@ export default function FilterPanel() {
           <select
             value={activeCondition}
             onChange={(e) => applyParams("condition", e.target.value)}
-            className={`${inputClasses} mt-1.5`}
+            className={`${inputClasses} mt-2.5`}
           >
             <option value="">Any condition</option>
             {listingConditions.map((c) => (
@@ -168,8 +168,8 @@ export default function FilterPanel() {
       </div>
 
       <div>
-        <p className={labelClasses}>Price range (\u00a3/day)</p>
-        <div className="flex items-center gap-2 mt-1.5">
+        <p className={labelClasses}>Price range (£/day)</p>
+        <div className="flex items-center gap-2 mt-2.5">
           <input
             type="number"
             min="0"
@@ -179,7 +179,7 @@ export default function FilterPanel() {
             placeholder="Min"
             className={`${inputClasses} w-24`}
           />
-          <span className="text-b4 text-[0.75rem]">\u2014</span>
+          <span className="text-ink/35 text-[0.75rem]">—</span>
           <input
             type="number"
             min="0"
@@ -192,7 +192,7 @@ export default function FilterPanel() {
           <button
             type="button"
             onClick={applyPriceRange}
-            className="px-3 py-2 bg-b7 text-b3 border border-b6 rounded-[10px] text-[0.72rem] font-montserrat font-medium hover:border-b4 transition-colors cursor-pointer"
+            className="px-3 py-2.5 bg-white text-ink/60 border border-line text-[0.64rem] font-montserrat font-semibold tracking-[0.12em] uppercase hover:border-ink/40 hover:text-ink transition-colors cursor-pointer"
           >
             Apply
           </button>
@@ -204,7 +204,7 @@ export default function FilterPanel() {
         <select
           value={activeSort}
           onChange={(e) => applyParams("sort", e.target.value)}
-          className={`${inputClasses} mt-1.5`}
+          className={`${inputClasses} mt-2.5`}
         >
           {sortOptions.map((o) => (
             <option key={o.value} value={o.value}>
@@ -217,9 +217,9 @@ export default function FilterPanel() {
       {hasActiveFilters && (
         <button
           onClick={clearFilters}
-          className="w-full py-2.5 border border-b6 rounded-[10px] text-[0.78rem] font-montserrat font-medium text-b4 hover:border-b4 hover:text-b1 transition-colors cursor-pointer"
+          className="w-full py-2.5 border border-line text-[0.64rem] font-montserrat font-semibold tracking-[0.14em] uppercase text-ink/55 hover:border-ink/40 hover:text-ink transition-colors cursor-pointer"
         >
-          Clear Filters
+          Clear filters
         </button>
       )}
     </div>

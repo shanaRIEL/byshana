@@ -24,7 +24,7 @@ export default function LeaveReviewButton({ bookingId, listingId }: LeaveReviewB
 
   if (hasReviewed) {
     return (
-      <span className="px-3.5 py-1.5 rounded-[8px] text-[0.75rem] font-montserrat font-medium text-b5 border border-b6">
+      <span className="px-4 py-2 text-[0.6rem] font-montserrat font-semibold tracking-[0.12em] uppercase text-ink/35 border border-line">
         Reviewed
       </span>
     );
@@ -33,7 +33,7 @@ export default function LeaveReviewButton({ bookingId, listingId }: LeaveReviewB
   return (
     <Link
       href={`/item/${listingId}?review=true`}
-      className="px-3.5 py-1.5 rounded-[8px] text-[0.75rem] font-montserrat font-medium bg-accent text-b8 hover:bg-accent/90 transition-colors"
+      className="px-4 py-2 bg-ink text-b8 border border-ink text-[0.6rem] font-montserrat font-semibold tracking-[0.12em] uppercase hover:bg-transparent hover:text-ink transition-colors"
     >
       Leave Review
     </Link>

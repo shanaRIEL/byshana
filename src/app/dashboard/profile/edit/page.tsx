@@ -10,20 +10,20 @@ import ProfileForm from "@/components/profile/ProfileForm";
 function EditSkeleton() {
   return (
     <div className="animate-pulse">
-      <div className="h-8 w-48 bg-b6 rounded-lg mb-2" />
-      <div className="h-4 w-64 bg-b6 rounded-lg mb-8" />
-      <div className="bg-b7 border border-b6 rounded-2xl p-8">
+      <div className="h-7 w-48 bg-sand mb-2" />
+      <div className="h-3.5 w-64 bg-sand mb-9" />
+      <div className="bg-white border border-line p-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i}>
-              <div className="h-3 w-20 bg-b6 rounded-lg mb-2" />
-              <div className="h-11 w-full bg-b6 rounded-xl" />
+              <div className="h-2.5 w-20 bg-sand mb-2" />
+              <div className="h-10 w-full bg-sand" />
             </div>
           ))}
         </div>
         <div className="mt-6">
-          <div className="h-3 w-10 bg-b6 rounded-lg mb-2" />
-          <div className="h-24 w-full bg-b6 rounded-xl" />
+          <div className="h-2.5 w-10 bg-sand mb-2" />
+          <div className="h-24 w-full bg-sand" />
         </div>
       </div>
     </div>
@@ -96,10 +96,10 @@ export default function EditProfilePage() {
   if (!isLoaded || loading) {
     return (
       <div>
-        <h1 className="font-playfair text-[1.8rem] text-b1 font-normal mb-2">
+        <h1 className="font-playfair text-[2rem] text-ink font-normal mb-2">
           Edit Profile
         </h1>
-        <p className="text-[0.88rem] text-b4 font-light mb-8">
+        <p className="text-[0.82rem] text-ink/50 font-light mb-10">
           Update your personal information and preferences.
         </p>
         <EditSkeleton />
@@ -113,13 +113,13 @@ export default function EditProfilePage() {
 
   return (
     <div>
-      <h1 className="font-playfair text-[1.8rem] text-b1 font-normal mb-2">
+      <h1 className="font-playfair text-[2rem] text-ink font-normal mb-2">
         Edit Profile
       </h1>
-      <p className="text-[0.88rem] text-b4 font-light mb-8">
+      <p className="text-[0.82rem] text-ink/50 font-light mb-10">
         Update your personal information and preferences.
       </p>
-      <div className="bg-b7 border border-b6 rounded-2xl p-8">
+      <div className="bg-white border border-line p-8">
         <ProfileForm
           initialData={{
             name: profile.name,

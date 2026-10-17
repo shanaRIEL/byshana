@@ -41,7 +41,7 @@ export default async function DashboardPage() {
     },
     {
       label: "Earnings",
-      value: `\u00A3${stats.totalEarnings.toFixed(2)}`,
+      value: `£${stats.totalEarnings.toFixed(2)}`,
       href: "/dashboard/listings",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -64,29 +64,30 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <div className="mb-10">
-        <h1 className="font-playfair text-[2rem] text-b1 font-normal mb-2">
+      <div className="mb-12">
+        <p className="text-[0.6rem] tracking-[0.2em] uppercase text-ink/40 font-montserrat font-semibold mb-3">Your wardrobe</p>
+        <h1 className="font-playfair text-[2.2rem] text-ink font-normal mb-2">
           Welcome back, {firstName}
         </h1>
-        <p className="text-[0.88rem] text-b4 font-light">
+        <p className="text-[0.84rem] text-ink/50 font-light">
           Here&apos;s what&apos;s happening with your wardrobe.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line">
         {cards.map((card) => (
           <Link
             key={card.label}
             href={card.href}
-            className="bg-b7 border border-b6 rounded-2xl p-6 no-underline transition-all duration-200 hover:shadow-[0_4px_20px_rgba(30,15,6,0.06)] hover:-translate-y-0.5"
+            className="bg-white p-7 no-underline transition-colors duration-200 hover:bg-sand"
           >
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-b4">{card.icon}</span>
+            <div className="flex items-center justify-between mb-5">
+              <span className="text-ink/40">{card.icon}</span>
             </div>
-            <p className="font-playfair text-[1.6rem] text-b1 font-normal mb-1">
+            <p className="font-playfair text-[1.7rem] text-ink font-normal mb-1.5">
               {card.value}
             </p>
-            <p className="text-[0.78rem] text-b4 font-light tracking-wide">
+            <p className="text-[0.6rem] tracking-[0.16em] uppercase text-ink/40 font-montserrat font-semibold">
               {card.label}
             </p>
           </Link>

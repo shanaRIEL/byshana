@@ -36,26 +36,26 @@ export default function ProfileCard({
   const location = [city, country].filter(Boolean).join(", ") || "Not set";
 
   return (
-    <div className="bg-b7 border border-b6 rounded-2xl p-8">
+    <div className="bg-white border border-line p-8">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="font-playfair text-[1.4rem] text-b1 font-normal">
+        <h2 className="font-playfair text-[1.5rem] text-ink font-normal">
           Profile Details
         </h2>
         <Link
           href="/dashboard/profile/edit"
-          className="bg-b2 text-b8 border-none py-2.5 px-5 rounded-xl text-[0.82rem] font-montserrat font-medium no-underline transition-colors duration-200 hover:bg-b1"
+          className="bg-ink text-b8 border border-ink py-2.5 px-5 rounded-none text-[0.62rem] font-montserrat font-semibold tracking-[0.14em] uppercase no-underline transition-colors duration-200 hover:bg-transparent hover:text-ink"
         >
           Edit Profile
         </Link>
       </div>
 
-      <div className="flex items-center gap-5 mb-8 pb-8 border-b border-b6">
+      <div className="flex items-center gap-5 mb-8 pb-8 border-b border-line">
         <UserAvatar src={image} name={name} size="lg" />
         <div>
-          <p className="font-montserrat text-[1.1rem] text-b1 font-medium mb-0.5">
+          <p className="font-montserrat text-[0.95rem] text-ink font-semibold mb-0.5">
             {name ?? "Unnamed User"}
           </p>
-          <p className="text-[0.82rem] text-b4 font-light">{email}</p>
+          <p className="text-[0.8rem] text-ink/50 font-light">{email}</p>
         </div>
       </div>
 
@@ -73,10 +73,10 @@ export default function ProfileCard({
 function ProfileField({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[0.72rem] text-b5 font-medium uppercase tracking-wider mb-1">
+      <p className="text-[0.6rem] text-ink/40 font-montserrat font-semibold uppercase tracking-[0.16em] mb-1.5">
         {label}
       </p>
-      <p className="text-[0.88rem] text-b1 font-light">{value}</p>
+      <p className="text-[0.84rem] text-ink font-light">{value}</p>
     </div>
   );
 }

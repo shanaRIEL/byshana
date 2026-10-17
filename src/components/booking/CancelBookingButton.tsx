@@ -26,7 +26,7 @@ export default function CancelBookingButton({ bookingId }: { bookingId: string }
     <button
       onClick={handleCancel}
       disabled={isPending}
-      className="px-3.5 py-1.5 rounded-[8px] border border-b6 text-[0.75rem] font-montserrat font-medium text-b4 hover:border-red-300 hover:text-red-600 transition-colors disabled:opacity-40 cursor-pointer"
+      className="px-4 py-2 border border-line text-[0.6rem] font-montserrat font-semibold tracking-[0.12em] uppercase text-ink/55 hover:border-b2 hover:text-b2 transition-colors disabled:opacity-40 cursor-pointer"
     >
       {isPending ? "Cancelling..." : "Cancel"}
     </button>

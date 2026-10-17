@@ -32,7 +32,7 @@ export default function OwnerBookingActions({ bookingId, status }: OwnerBookingA
     });
   };
 
-  const btnBase = "px-3.5 py-1.5 rounded-[8px] text-[0.75rem] font-montserrat font-medium transition-colors disabled:opacity-40 cursor-pointer";
+  const btnBase = "px-4 py-2 border text-[0.6rem] font-montserrat font-semibold tracking-[0.12em] uppercase transition-colors disabled:opacity-40 cursor-pointer";
 
   if (status === "pending") {
     return (
@@ -40,14 +40,14 @@ export default function OwnerBookingActions({ bookingId, status }: OwnerBookingA
         <button
           onClick={() => run(acceptBookingAction)}
           disabled={isPending}
-          className={`${btnBase} bg-b1 text-b8 hover:bg-b2`}
+          className={`${btnBase} bg-ink text-b8 border-ink hover:bg-transparent hover:text-ink`}
         >
           Accept
         </button>
         <button
           onClick={() => run(rejectBookingAction)}
           disabled={isPending}
-          className={`${btnBase} border border-b6 text-b4 hover:border-red-300 hover:text-red-600`}
+          className={`${btnBase} border-line text-ink/55 hover:border-b2 hover:text-b2`}
         >
           Reject
         </button>
@@ -60,7 +60,7 @@ export default function OwnerBookingActions({ bookingId, status }: OwnerBookingA
       <button
         onClick={() => run(startBookingAction)}
         disabled={isPending}
-        className={`${btnBase} bg-b1 text-b8 hover:bg-b2`}
+        className={`${btnBase} bg-ink text-b8 border-ink hover:bg-transparent hover:text-ink`}
       >
         {isPending ? "Starting..." : "Mark as active"}
       </button>
@@ -72,7 +72,7 @@ export default function OwnerBookingActions({ bookingId, status }: OwnerBookingA
       <button
         onClick={() => run(completeBookingAction)}
         disabled={isPending}
-        className={`${btnBase} bg-b1 text-b8 hover:bg-b2`}
+        className={`${btnBase} bg-ink text-b8 border-ink hover:bg-transparent hover:text-ink`}
       >
         {isPending ? "Completing..." : "Mark as completed"}
       </button>

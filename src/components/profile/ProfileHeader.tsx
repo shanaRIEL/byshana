@@ -21,14 +21,14 @@ export default function ProfileHeader({
   createdAt,
 }: ProfileHeaderProps) {
   return (
-    <div className="flex items-center gap-6 mb-8">
+    <div className="flex items-center gap-6 mb-10">
       <UserAvatar src={image} name={name} size="xl" />
       <div>
-        <h1 className="font-playfair text-[2rem] text-b1 font-normal mb-1">
+        <h1 className="font-playfair text-[2rem] text-ink font-normal mb-1">
           {name ?? "Unnamed User"}
         </h1>
-        <p className="text-[0.88rem] text-b4 font-light mb-1">{email}</p>
-        <p className="text-[0.78rem] text-b5 font-light">
+        <p className="text-[0.8rem] text-ink/50 font-light mb-1">{email}</p>
+        <p className="text-[0.6rem] tracking-[0.14em] uppercase text-ink/35 font-montserrat font-semibold">
           Member since {formatDate(createdAt)}
         </p>
       </div>

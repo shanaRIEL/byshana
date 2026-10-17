@@ -25,19 +25,22 @@ export default async function WishlistPage() {
 
   return (
     <div className="min-h-screen bg-b8">
-      <div className="px-12 max-[900px]:px-6 py-10">
-        <div className="mb-8">
-          <h1 className="font-playfair text-[2rem] text-b1 mb-2">My Wishlist</h1>
-          <p className="text-[0.84rem] text-b4 font-montserrat">
+      <div className="px-6 sm:px-10 lg:px-16 py-12 lg:py-16">
+        <div className="mb-10">
+          <span className="eyebrow text-ink/45 block mb-3">Saved for later</span>
+          <h1 className="font-playfair text-[2.2rem] sm:text-[2.6rem] text-ink font-normal leading-tight">
+            My wishlist
+          </h1>
+          <p className="text-[0.66rem] tracking-[0.18em] uppercase text-ink/45 font-semibold mt-3">
             {listings.length} {listings.length === 1 ? "item" : "items"} saved
           </p>
         </div>
 
         {listings.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
-            <div className="w-20 h-20 rounded-full bg-b7 flex items-center justify-center mb-6">
+          <div className="flex flex-col items-center justify-center py-24 text-center bg-white border border-line">
+            <div className="w-16 h-16 bg-sand flex items-center justify-center mb-7">
               <svg
-                className="w-10 h-10 text-b5"
+                className="w-7 h-7 text-ink/40"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -50,21 +53,19 @@ export default async function WishlistPage() {
                 />
               </svg>
             </div>
-            <h3 className="font-playfair text-[1.3rem] text-b1 mb-2">
+            <h3 className="font-playfair text-[1.5rem] text-ink mb-2">
               No saved items yet
             </h3>
-            <p className="text-[0.84rem] text-b4 font-montserrat max-w-sm mb-6">
-              Browse the marketplace and tap the heart icon to save items you love.
+            <p className="text-[0.82rem] text-ink/50 font-light max-w-sm mb-8 leading-relaxed">
+              Browse the marketplace and tap the heart on any piece to save it
+              here for later.
             </p>
-            <Link
-              href="/browse"
-              className="px-6 py-2.5 bg-b1 text-b8 font-montserrat text-[0.82rem] font-semibold rounded-[10px] hover:bg-b2 transition-colors"
-            >
-              Browse listings
+            <Link href="/browse" className="btn-ink">
+              Browse the collection
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-9 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4">
             {listings.map((listing) => (
               <ListingCard
                 key={listing.id}

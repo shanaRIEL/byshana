@@ -258,19 +258,19 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
   };
 
   const inputClasses =
-    "py-[0.72rem] px-4 border-[1.5px] border-b6 rounded-[12px] font-montserrat text-[0.84rem] text-b1 bg-b7 outline-none transition-colors duration-200 focus:border-b4";
+    "py-2.5 px-3.5 border border-line rounded-none font-montserrat text-[0.8rem] text-ink bg-white outline-none transition-colors duration-200 focus:border-ink/40";
   const errorClasses = "text-[0.72rem] text-red-600 mt-1";
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[1.2rem]">
       {serverError && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-[0.84rem]">
+        <div className="bg-b1/10 border border-b2/30 text-b2 px-4 py-3 text-[0.82rem]">
           {serverError}
         </div>
       )}
 
       <div className="flex flex-col gap-[0.35rem]">
-        <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+        <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
           Item name
         </label>
         <input
@@ -284,7 +284,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
 
       <div className="grid grid-cols-2 gap-[1.2rem] max-[600px]:grid-cols-1">
         <div className="flex flex-col gap-[0.35rem]">
-          <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+          <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
             Category
           </label>
           <select {...register("category")} className={inputClasses}>
@@ -301,7 +301,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         </div>
 
         <div className="flex flex-col gap-[0.35rem]">
-          <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+          <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
             Size
           </label>
           <select {...register("size")} className={inputClasses}>
@@ -316,7 +316,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         </div>
 
         <div className="flex flex-col gap-[0.35rem]">
-          <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+          <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
             Daily rental price
           </label>
           <input
@@ -332,7 +332,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         </div>
 
         <div className="flex flex-col gap-[0.35rem]">
-          <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+          <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
             Buy-now price (optional)
           </label>
           <input
@@ -348,7 +348,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         </div>
 
         <div className="flex flex-col gap-[0.35rem]">
-          <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+          <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
             Deposit
           </label>
           <input
@@ -364,7 +364,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         </div>
 
         <div className="flex flex-col gap-[0.35rem]">
-          <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+          <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
             Brand / Designer
           </label>
           <input
@@ -379,7 +379,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         </div>
 
         <div className="flex flex-col gap-[0.35rem]">
-          <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+          <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
             Condition
           </label>
           <select {...register("condition")} className={inputClasses}>
@@ -397,7 +397,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
       </div>
 
       <div className="flex flex-col gap-[0.35rem]">
-        <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+        <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
           Description
         </label>
         <textarea
@@ -412,7 +412,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
       </div>
 
       <div className="flex flex-col gap-[0.35rem]">
-        <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+        <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
           Location
         </label>
         <input
@@ -427,7 +427,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
       </div>
 
       <div className="flex flex-col gap-[0.35rem]">
-        <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+        <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
           Photos ({totalImages}/{MAX_IMAGES})
         </label>
 
@@ -436,7 +436,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
             {existingImages.map((img) => (
               <div
                 key={img.id}
-                className="relative aspect-square rounded-xl overflow-hidden border border-b6 group"
+                className="relative aspect-square overflow-hidden border border-line group"
               >
                 <Image
                   src={img.url}
@@ -461,7 +461,7 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
             {newImages.map((img, i) => (
               <div
                 key={i}
-                className="relative aspect-square rounded-xl overflow-hidden border border-b6 group"
+                className="relative aspect-square overflow-hidden border border-line group"
               >
                 <Image
                   src={img.preview}
@@ -500,13 +500,13 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         {totalImages < MAX_IMAGES && (
           <div
             onClick={() => fileInputRef.current?.click()}
-            className="border-2 border-dashed border-b5 rounded-[14px] py-8 text-center bg-b7 cursor-pointer hover:border-b4 transition-colors duration-200"
+            className="border border-dashed border-line py-10 text-center bg-sand/60 cursor-pointer hover:border-ink/40 transition-colors duration-200"
           >
             <div className="text-[2rem] mb-1">+</div>
-            <div className="text-[0.84rem] text-b3 font-medium">
+            <div className="text-[0.7rem] tracking-[0.1em] uppercase text-ink/60 font-semibold font-montserrat">
               Click to add photos
             </div>
-            <div className="text-[0.74rem] text-b5 mt-[0.2rem]">
+            <div className="text-[0.7rem] text-ink/35 mt-[0.2rem]">
               JPG, PNG, WebP up to 5MB each
             </div>
           </div>
@@ -529,14 +529,14 @@ export default function EditListingForm({ listing }: EditListingFormProps) {
         <button
           type="button"
           onClick={() => router.push("/dashboard/listings")}
-          className="flex-1 px-4 py-3 border border-b6 rounded-[12px] text-[0.84rem] font-montserrat font-medium text-b4 hover:border-b4 transition-colors cursor-pointer"
+          className="flex-1 px-4 py-3 border border-line rounded-none text-[0.64rem] font-montserrat font-semibold tracking-[0.14em] uppercase text-ink/55 hover:border-ink/40 hover:text-ink transition-colors cursor-pointer"
         >
           Cancel
         </button>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1 bg-b1 text-b8 border-none py-3 rounded-[12px] text-[0.84rem] font-montserrat font-semibold cursor-pointer transition-colors duration-200 tracking-[0.04em] hover:bg-b2 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="flex-1 bg-ink text-b8 border border-ink py-3 rounded-none text-[0.64rem] font-montserrat font-semibold tracking-[0.16em] uppercase cursor-pointer transition-colors duration-200 hover:bg-transparent hover:text-ink disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "Saving..." : "Save Changes"}
         </button>

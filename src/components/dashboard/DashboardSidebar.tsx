@@ -69,16 +69,16 @@ export default function DashboardSidebar() {
   };
 
   return (
-    <aside className="w-60 min-h-screen bg-b7 border-r border-b6 py-8 px-4 flex-shrink-0">
-      <nav className="flex flex-col gap-1">
+    <aside className="w-60 min-h-screen bg-white border-r border-line py-10 px-4 flex-shrink-0">
+      <nav className="flex flex-col gap-0.5">
         {sidebarLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className={`flex items-center gap-3 px-4 py-3 rounded-xl text-[0.82rem] font-montserrat no-underline transition-all duration-200 ${
+            className={`flex items-center gap-3 px-4 py-3 no-underline transition-colors duration-200 text-[0.64rem] font-montserrat font-semibold tracking-[0.14em] uppercase ${
               isActive(link.href)
-                ? "bg-b2 text-b8 font-medium"
-                : "text-b3 hover:bg-b6 hover:text-b1"
+                ? "bg-ink text-b8"
+                : "text-ink/50 hover:text-ink hover:bg-sand"
             }`}
           >
             {link.icon}

@@ -40,14 +40,14 @@ export default function UserAvatar({ src, name, size = "md" }: UserAvatarProps) 
         width={dimension}
         height={dimension}
         unoptimized
-        className={`${sizeClass} rounded-full object-cover border-2 border-b6`}
+        className={`${sizeClass} rounded-full object-cover border border-line`}
       />
     );
   }
 
   return (
     <div
-      className={`${sizeClass} rounded-full bg-b2 text-b8 flex items-center justify-center font-montserrat font-semibold border-2 border-b6`}
+      className={`${sizeClass} rounded-full bg-sand text-ink/60 flex items-center justify-center font-montserrat font-semibold border border-line`}
     >
       {initials}
     </div>

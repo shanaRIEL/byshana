@@ -59,8 +59,8 @@ export default function WishlistButton({
         width={size}
         height={size}
         viewBox="0 0 24 24"
-        fill={wishlisted ? "#8B4513" : "none"}
-        stroke={wishlisted ? "#8B4513" : "currentColor"}
+        fill={wishlisted ? "#14100c" : "none"}
+        stroke={wishlisted ? "#14100c" : "currentColor"}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

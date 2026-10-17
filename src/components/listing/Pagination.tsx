@@ -38,28 +38,28 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
   }
 
   return (
-    <nav className="flex items-center justify-center gap-1.5 mt-10" aria-label="Pagination">
+    <nav className="flex items-center justify-center gap-1.5 mt-12" aria-label="Pagination">
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage <= 1}
-        className="px-3 py-2 rounded-[10px] text-[0.78rem] font-montserrat font-medium border border-b6 text-b4 hover:border-b4 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+        className="px-4 py-2.5 rounded-none text-[0.64rem] font-montserrat font-semibold tracking-[0.12em] uppercase border border-line text-ink/55 hover:border-ink/40 hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
       >
         Prev
       </button>
 
       {pages.map((p, i) =>
         p === "..." ? (
-          <span key={`dots-${i}`} className="px-2 py-2 text-[0.78rem] text-b5 font-montserrat">
+          <span key={`dots-${i}`} className="px-2 py-2.5 text-[0.72rem] text-ink/35 font-montserrat">
             &hellip;
           </span>
         ) : (
           <button
             key={p}
             onClick={() => goToPage(p)}
-            className={`min-w-[36px] h-9 rounded-[10px] text-[0.78rem] font-montserrat font-medium border transition-colors cursor-pointer ${
+            className={`min-w-[38px] h-[38px] rounded-none text-[0.7rem] font-montserrat font-medium border transition-colors cursor-pointer ${
               p === currentPage
-                ? "bg-b1 text-b8 border-b1"
-                : "bg-transparent text-b4 border-b6 hover:border-b4"
+                ? "bg-ink text-b8 border-ink"
+                : "bg-transparent text-ink/55 border-line hover:border-ink/40 hover:text-ink"
             }`}
           >
             {p}
@@ -70,7 +70,7 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
       <button
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage >= totalPages}
-        className="px-3 py-2 rounded-[10px] text-[0.78rem] font-montserrat font-medium border border-b6 text-b4 hover:border-b4 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+        className="px-4 py-2.5 rounded-none text-[0.64rem] font-montserrat font-semibold tracking-[0.12em] uppercase border border-line text-ink/55 hover:border-ink/40 hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
       >
         Next
       </button>

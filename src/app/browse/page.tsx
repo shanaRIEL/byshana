@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getListings, getUserWishlistIds } from "@/lib/db";
 import { prisma } from "@/lib/prisma";
@@ -65,8 +64,8 @@ async function ListingsGrid({ searchParams }: BrowsePageProps) {
 
   return (
     <>
-      <div className="flex items-center justify-between mb-6">
-        <p className="text-[0.82rem] text-b4 font-montserrat">
+      <div className="flex items-center justify-between mb-8">
+        <p className="text-[0.66rem] tracking-[0.18em] uppercase font-semibold text-ink/45 font-montserrat">
           {result.total} {result.total === 1 ? "listing" : "listings"} found
         </p>
       </div>
@@ -75,7 +74,7 @@ async function ListingsGrid({ searchParams }: BrowsePageProps) {
         <EmptyState hasFilters={hasFilters} />
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-9 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4">
             {result.listings.map((listing) => (
               <ListingCard
                 key={listing.id}
@@ -94,7 +93,7 @@ async function ListingsGrid({ searchParams }: BrowsePageProps) {
 
 function ListingsGridSkeleton() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+    <div className="grid grid-cols-2 gap-x-4 gap-y-9 lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4">
       <ListingSkeleton count={8} />
     </div>
   );
@@ -103,26 +102,19 @@ function ListingsGridSkeleton() {
 export default async function BrowsePage({ searchParams }: BrowsePageProps) {
   return (
     <div className="min-h-screen bg-b8">
-      <div className="px-12 max-[900px]:px-6 py-10">
-        <div className="bg-b2 rounded-[20px] px-10 py-10 mb-10 flex items-center justify-between max-[600px]:flex-col max-[600px]:text-center max-[600px]:gap-4">
-          <div>
-            <h1 className="font-playfair text-[2.2rem] text-b7 font-normal">
-              Browse Shana
-            </h1>
-            <p className="text-[0.88rem] text-b5 mt-2 font-light">
-              Discover clothes available for rent or purchase
-            </p>
-          </div>
-          <Link
-            href="/list"
-            className="bg-transparent text-b6 border-[1.5px] border-b5 py-3 px-7 rounded-[14px] text-[0.82rem] font-montserrat font-medium transition-all duration-200 hover:bg-b5 hover:text-b1"
-          >
-            + List your clothes
-          </Link>
+      <div className="px-6 sm:px-10 lg:px-16 py-12 lg:py-16">
+        <div className="mb-10">
+          <span className="eyebrow text-ink/45 block mb-3">Browse the marketplace</span>
+          <h1 className="font-playfair text-[2.2rem] sm:text-[2.6rem] text-ink font-normal leading-tight">
+            The collection
+          </h1>
+          <p className="text-[0.85rem] text-ink/50 mt-2 font-light">
+            Discover clothes available for rent or purchase across the UK.
+          </p>
         </div>
 
-        <div className="grid grid-cols-[260px_1fr] gap-8 max-[900px]:grid-cols-1">
-          <aside className="bg-b8 border border-b6 rounded-[16px] p-5 h-fit sticky top-6 max-[900px]:static max-[900px]:sticky max-[900px]:top-0">
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 lg:gap-12">
+          <aside className="bg-white border border-line p-6 lg:sticky lg:top-24 lg:self-start max-[900px]:static">
             <Suspense fallback={null}>
               <FilterPanel />
             </Suspense>

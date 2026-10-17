@@ -36,15 +36,15 @@ export default async function RentBookingsPage() {
   function renderList(items: BookingData[], showReviewButton = false) {
     if (items.length === 0) {
       return (
-        <div className="flex flex-col items-center justify-center py-16 text-center">
-          <div className="w-16 h-16 rounded-full bg-b7 flex items-center justify-center mb-4">
-            <svg className="w-8 h-8 text-b5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <div className="flex flex-col items-center justify-center py-20 text-center">
+          <div className="w-16 h-16 bg-sand flex items-center justify-center mb-5">
+            <svg className="w-8 h-8 text-ink/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
             </svg>
           </div>
-          <p className="text-[0.88rem] text-b3 font-montserrat mb-1">No bookings here</p>
-          <p className="text-[0.78rem] text-b5 font-montserrat">
-            <Link href="/browse" className="underline hover:text-b3">Browse listings</Link> to find something you love.
+          <p className="text-[0.7rem] tracking-[0.14em] uppercase text-ink/50 font-montserrat font-semibold mb-2">No bookings here</p>
+          <p className="text-[0.78rem] text-ink/40 font-montserrat">
+            <Link href="/browse" className="underline underline-offset-4 hover:text-ink">Browse listings</Link> to find something you love.
           </p>
         </div>
       );
@@ -68,8 +68,8 @@ export default async function RentBookingsPage() {
   return (
     <div className="min-h-screen bg-b8">
       <div className="px-12 max-[900px]:px-6 py-10">
-        <h1 className="font-playfair text-[2rem] text-b1 mb-2">My Bookings</h1>
-        <p className="text-[0.84rem] text-b4 font-montserrat mb-8">
+        <h1 className="font-playfair text-[2rem] text-ink mb-2">My Bookings</h1>
+        <p className="text-[0.82rem] text-ink/50 font-montserrat mb-10">
           Track your rental bookings and history.
         </p>
 

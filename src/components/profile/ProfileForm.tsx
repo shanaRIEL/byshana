@@ -70,13 +70,13 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-5 py-3 text-[0.82rem]">
+        <div className="bg-b1/10 border border-b2/30 text-b2 px-5 py-3 text-[0.82rem]">
           {error}
         </div>
       )}
 
       {success && (
-        <div className="bg-green-50 border border-green-200 text-green-700 rounded-xl px-5 py-3 text-[0.82rem]">
+        <div className="bg-sand border border-line text-ink px-5 py-3 text-[0.82rem]">
           Profile updated successfully.
         </div>
       )}
@@ -109,14 +109,14 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
           onChange={handleChange}
         />
         <div>
-          <label className="block text-[0.72rem] text-b5 font-medium uppercase tracking-wider mb-2">
+          <label className="block text-[0.6rem] text-ink/50 font-montserrat font-semibold uppercase tracking-[0.16em] mb-2">
             Gender
           </label>
           <select
             name="gender"
             value={form.gender ?? ""}
             onChange={handleChange}
-            className="w-full bg-b8 border border-b6 rounded-xl px-4 py-3 text-[0.88rem] text-b1 font-light font-montserrat outline-none transition-colors duration-200 focus:border-b4"
+            className="w-full bg-white border border-line rounded-none px-4 py-2.5 text-[0.84rem] text-ink font-light font-montserrat outline-none transition-colors duration-200 focus:border-ink/40"
           >
             <option value="">Prefer not to say</option>
             <option value="female">Female</option>
@@ -135,7 +135,7 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
       </div>
 
       <div>
-        <label className="block text-[0.72rem] text-b5 font-medium uppercase tracking-wider mb-2">
+        <label className="block text-[0.6rem] text-ink/50 font-montserrat font-semibold uppercase tracking-[0.16em] mb-2">
           Bio
         </label>
         <textarea
@@ -145,9 +145,9 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
           rows={4}
           maxLength={500}
           placeholder="Tell others about yourself and your style..."
-          className="w-full bg-b8 border border-b6 rounded-xl px-4 py-3 text-[0.88rem] text-b1 font-light font-montserrat outline-none transition-colors duration-200 focus:border-b4 resize-none"
+          className="w-full bg-white border border-line rounded-none px-4 py-2.5 text-[0.84rem] text-ink font-light font-montserrat outline-none transition-colors duration-200 focus:border-ink/40 resize-none"
         />
-        <p className="text-[0.72rem] text-b5 mt-1">
+        <p className="text-[0.7rem] text-ink/40 mt-1">
           {(form.bio ?? "").length}/500
         </p>
       </div>
@@ -156,14 +156,14 @@ export default function ProfileForm({ initialData }: ProfileFormProps) {
         <button
           type="submit"
           disabled={saving}
-          className="bg-b2 text-b8 border-none py-3 px-8 rounded-xl text-[0.88rem] font-montserrat font-medium transition-colors duration-200 hover:bg-b1 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+          className="bg-ink text-b8 border border-ink py-3 px-8 rounded-none text-[0.64rem] font-montserrat font-semibold tracking-[0.16em] uppercase transition-colors duration-200 hover:bg-transparent hover:text-ink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {saving ? "Saving..." : "Save Changes"}
         </button>
         <button
           type="button"
           onClick={() => router.push("/dashboard/profile")}
-          className="bg-transparent border-[1.5px] border-b5 text-b3 py-3 px-8 rounded-xl text-[0.88rem] font-montserrat font-medium transition-all duration-200 hover:bg-b5 hover:text-b1 cursor-pointer"
+          className="bg-transparent border border-line text-ink/55 py-3 px-8 rounded-none text-[0.64rem] font-montserrat font-semibold tracking-[0.16em] uppercase transition-colors duration-200 hover:border-ink/40 hover:text-ink cursor-pointer"
         >
           Cancel
         </button>
@@ -189,7 +189,7 @@ function FormField({
 }) {
   return (
     <div>
-      <label className="block text-[0.72rem] text-b5 font-medium uppercase tracking-wider mb-2">
+      <label className="block text-[0.6rem] text-ink/50 font-montserrat font-semibold uppercase tracking-[0.16em] mb-2">
         {label}
       </label>
       <input
@@ -198,7 +198,7 @@ function FormField({
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full bg-b8 border border-b6 rounded-xl px-4 py-3 text-[0.88rem] text-b1 font-light font-montserrat outline-none transition-colors duration-200 focus:border-b4"
+        className="w-full bg-white border border-line rounded-none px-4 py-2.5 text-[0.84rem] text-ink font-light font-montserrat outline-none transition-colors duration-200 focus:border-ink/40"
       />
     </div>
   );

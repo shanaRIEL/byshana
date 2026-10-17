@@ -34,13 +34,13 @@ export default function DeleteConfirmDialog({
     <dialog
       ref={dialogRef}
       onClose={onClose}
-      className="backdrop:bg-b1/60 bg-transparent p-0 rounded-[16px] max-w-[400px] w-full"
+      className="backdrop:bg-ink/60 bg-transparent p-0 max-w-[400px] w-full"
     >
-      <div className="bg-b8 border border-b6 rounded-[16px] p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
+      <div className="bg-white border border-line p-7">
+        <div className="flex items-center gap-3.5 mb-5">
+          <div className="w-10 h-10 bg-b1/10 flex items-center justify-center shrink-0">
             <svg
-              className="w-5 h-5 text-red-600"
+              className="w-4.5 h-4.5 text-b2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -54,18 +54,18 @@ export default function DeleteConfirmDialog({
             </svg>
           </div>
           <div>
-            <h3 className="font-montserrat font-semibold text-[0.95rem] text-b1">
+            <h3 className="font-playfair text-[1.2rem] text-ink">
               Delete listing
             </h3>
-            <p className="text-[0.78rem] text-b4 font-montserrat">
+            <p className="text-[0.6rem] tracking-[0.12em] uppercase text-ink/40 font-montserrat font-semibold mt-0.5">
               This action cannot be undone.
             </p>
           </div>
         </div>
 
-        <p className="text-[0.84rem] text-b3 font-light mb-6">
+        <p className="text-[0.82rem] text-ink/60 font-light leading-relaxed mb-7">
           Are you sure you want to delete{" "}
-          <span className="font-medium text-b1">&ldquo;{title}&rdquo;</span>?
+          <span className="font-medium text-ink">&ldquo;{title}&rdquo;</span>?
           All associated images and data will be permanently removed.
         </p>
 
@@ -73,14 +73,14 @@ export default function DeleteConfirmDialog({
           <button
             onClick={onClose}
             disabled={isDeleting}
-            className="flex-1 px-4 py-2.5 border border-b6 rounded-[10px] text-[0.82rem] font-montserrat font-medium text-b4 hover:border-b4 transition-colors disabled:opacity-40 cursor-pointer"
+            className="flex-1 px-4 py-3 border border-line text-[0.62rem] font-montserrat font-semibold tracking-[0.14em] uppercase text-ink/55 hover:border-ink/40 hover:text-ink transition-colors disabled:opacity-40 cursor-pointer"
           >
             Cancel
           </button>
           <button
             onClick={onConfirm}
             disabled={isDeleting}
-            className="flex-1 px-4 py-2.5 bg-red-600 text-b8 rounded-[10px] text-[0.82rem] font-montserrat font-semibold hover:bg-red-700 transition-colors disabled:opacity-40 cursor-pointer"
+            className="flex-1 px-4 py-3 bg-b2 text-b8 border border-b2 text-[0.62rem] font-montserrat font-semibold tracking-[0.14em] uppercase hover:bg-transparent hover:text-b2 transition-colors disabled:opacity-40 cursor-pointer"
           >
             {isDeleting ? "Deleting..." : "Delete"}
           </button>

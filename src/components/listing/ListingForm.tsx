@@ -204,14 +204,14 @@ export default function ListingForm() {
   };
 
   const inputClasses =
-    "py-[0.72rem] px-4 border-[1.5px] border-b6 rounded-[12px] font-montserrat text-[0.84rem] text-b1 bg-b7 outline-none transition-colors duration-200 focus:border-b4";
+    "py-2.5 px-3.5 border border-line rounded-none font-montserrat text-[0.8rem] text-ink bg-white outline-none transition-colors duration-200 focus:border-ink/40";
   const errorClasses = "text-[0.72rem] text-red-600 mt-1";
 
   return (
     <div className="px-12 max-[768px]:px-6 py-12">
-      <div className="bg-b1 rounded-[20px] px-14 py-14 mb-10 text-center">
-        <h1 className="font-great-vibes text-[4rem] text-b6 mb-2">Shana</h1>
-        <p className="text-[0.92rem] text-b5 font-light max-w-[500px] mx-auto">
+      <div className="bg-ink px-14 py-16 mb-12 text-center">
+        <h1 className="font-great-vibes text-[4.5rem] text-b8 mb-3">Shana</h1>
+        <p className="text-[0.88rem] text-b8/55 font-light max-w-[500px] mx-auto">
           List your clothes and start earning. Let others rent or buy items from
           your wardrobe.
         </p>
@@ -221,15 +221,15 @@ export default function ListingForm() {
         {steps.map((s) => (
           <div
             key={s.num}
-            className="bg-b8 rounded-[18px] py-8 px-6 border-[0.5px] border-b6 text-center"
+            className="bg-white border border-line py-10 px-6 text-center"
           >
-            <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center text-[1.1rem] font-semibold mx-auto mb-[1.2rem] font-playfair bg-b7 text-b2">
+            <div className="w-11 h-11 flex items-center justify-center text-[1rem] font-semibold mx-auto mb-5 font-playfair bg-sand text-ink">
               {s.num}
             </div>
-            <h3 className="text-[0.95rem] font-semibold text-b1 mb-2">
+            <h3 className="text-[0.7rem] tracking-[0.12em] uppercase font-montserrat font-semibold text-ink mb-2.5">
               {s.title}
             </h3>
-            <p className="text-[0.8rem] text-b3 leading-[1.7] font-light">
+            <p className="text-[0.8rem] text-ink/55 leading-[1.7] font-light">
               {s.desc}
             </p>
           </div>
@@ -238,24 +238,24 @@ export default function ListingForm() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-b8 rounded-[20px] p-10 border-[0.5px] border-b6 max-w-[700px] mx-auto"
+        className="bg-white border border-line p-10 max-w-[700px] mx-auto"
       >
-        <h2 className="font-playfair text-[1.8rem] text-b1 mb-1">
+        <h2 className="font-playfair text-[2rem] text-ink mb-1.5">
           List your item
         </h2>
-        <p className="text-[0.84rem] text-b4 mb-8 font-light">
+        <p className="text-[0.8rem] text-ink/50 mb-10 font-light">
           Fill in the details below to list your clothes.
         </p>
 
         {serverError && (
-          <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 mb-6 text-[0.84rem]">
+          <div className="bg-b1/10 border border-b2/30 text-b2 px-4 py-3 mb-6 text-[0.82rem]">
             {serverError}
           </div>
         )}
 
         <div className="grid grid-cols-2 gap-[1.2rem] max-[600px]:grid-cols-1">
           <div className="flex flex-col gap-[0.35rem] col-span-full">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Item name
             </label>
             <input
@@ -270,7 +270,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem]">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Category
             </label>
             <select {...register("category")} className={inputClasses}>
@@ -287,7 +287,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem]">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Size
             </label>
             <select {...register("size")} className={inputClasses}>
@@ -304,7 +304,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem]">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Daily rental price
             </label>
             <input
@@ -320,7 +320,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem]">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Buy-now price (optional)
             </label>
             <input
@@ -336,7 +336,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem]">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Deposit
             </label>
             <input
@@ -352,7 +352,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem]">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Brand / Designer
             </label>
             <input
@@ -367,7 +367,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem]">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Condition
             </label>
             <select {...register("condition")} className={inputClasses}>
@@ -384,7 +384,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem] col-span-full">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Description
             </label>
             <textarea
@@ -399,7 +399,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem] col-span-full">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Location
             </label>
             <input
@@ -414,7 +414,7 @@ export default function ListingForm() {
           </div>
 
           <div className="flex flex-col gap-[0.35rem] col-span-full">
-            <label className="text-[0.68rem] font-semibold tracking-[0.1em] uppercase text-b3">
+            <label className="text-[0.6rem] font-semibold tracking-[0.16em] uppercase text-ink/50">
               Photos ({images.length}/{MAX_IMAGES})
             </label>
 
@@ -422,7 +422,7 @@ export default function ListingForm() {
               {images.map((img, i) => (
                 <div
                   key={i}
-                  className="relative aspect-square rounded-xl overflow-hidden border border-b6 group"
+                  className="relative aspect-square overflow-hidden border border-line group"
                 >
                   <Image
                     src={img.preview}
@@ -460,13 +460,13 @@ export default function ListingForm() {
             {images.length < MAX_IMAGES && (
               <div
                 onClick={() => fileInputRef.current?.click()}
-                className="border-2 border-dashed border-b5 rounded-[14px] py-8 text-center bg-b7 cursor-pointer hover:border-b4 transition-colors duration-200"
+                className="border border-dashed border-line py-10 text-center bg-sand/60 cursor-pointer hover:border-ink/40 transition-colors duration-200"
               >
                 <div className="text-[2rem] mb-1">+</div>
-                <div className="text-[0.84rem] text-b3 font-medium">
+                <div className="text-[0.7rem] tracking-[0.1em] uppercase text-ink/60 font-semibold font-montserrat">
                   Click to add photos
                 </div>
-                <div className="text-[0.74rem] text-b5 mt-[0.2rem]">
+                <div className="text-[0.7rem] text-ink/35 mt-[0.2rem]">
                   JPG, PNG, WebP up to 5MB each
                 </div>
               </div>
@@ -489,7 +489,7 @@ export default function ListingForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-b1 text-b8 border-none py-4 rounded-[14px] text-[0.9rem] font-montserrat font-semibold cursor-pointer mt-6 transition-colors duration-200 tracking-[0.04em] hover:bg-b2 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="w-full bg-ink text-b8 border border-ink py-4 rounded-none text-[0.66rem] font-montserrat font-semibold tracking-[0.18em] uppercase cursor-pointer mt-8 transition-colors duration-200 hover:bg-transparent hover:text-ink disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "Submitting..." : "Submit Listing"}
         </button>

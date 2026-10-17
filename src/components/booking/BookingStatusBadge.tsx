@@ -1,17 +1,17 @@
 const statusConfig: Record<string, { label: string; bg: string; text: string }> = {
-  pending: { label: "Pending", bg: "bg-yellow-100", text: "text-yellow-800" },
-  accepted: { label: "Accepted", bg: "bg-blue-100", text: "text-blue-800" },
-  active: { label: "Active", bg: "bg-green-100", text: "text-green-800" },
-  completed: { label: "Completed", bg: "bg-b7", text: "text-b3" },
-  rejected: { label: "Rejected", bg: "bg-red-100", text: "text-red-800" },
-  cancelled: { label: "Cancelled", bg: "bg-b7", text: "text-b5" },
+  pending: { label: "Pending", bg: "bg-sand-deep", text: "text-ink/70" },
+  accepted: { label: "Accepted", bg: "bg-ink/10", text: "text-ink" },
+  active: { label: "Active", bg: "bg-ink text-b8", text: "text-b8" },
+  completed: { label: "Completed", bg: "bg-white border border-line", text: "text-ink/50" },
+  rejected: { label: "Rejected", bg: "bg-b1/10", text: "text-b2" },
+  cancelled: { label: "Cancelled", bg: "bg-white border border-line", text: "text-ink/35" },
 };
 
 export default function BookingStatusBadge({ status }: { status: string }) {
   const config = statusConfig[status] ?? statusConfig.pending;
   return (
     <span
-      className={`inline-block text-[0.65rem] font-semibold font-montserrat tracking-wide uppercase px-2.5 py-1 rounded-full ${config.bg} ${config.text}`}
+      className={`inline-block text-[0.56rem] font-semibold font-montserrat tracking-[0.14em] uppercase px-2.5 py-1 shrink-0 ${config.bg} ${config.text}`}
     >
       {config.label}
     </span>

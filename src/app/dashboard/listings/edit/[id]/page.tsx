@@ -29,14 +29,14 @@ export default async function EditListingPage({ params }: EditListingPageProps) 
 
   return (
     <div>
-      <h1 className="font-playfair text-[1.8rem] text-b1 font-normal mb-2">
+      <h1 className="font-playfair text-[2rem] text-ink font-normal mb-2">
         Edit Listing
       </h1>
-      <p className="text-[0.88rem] text-b4 font-light mb-8">
+      <p className="text-[0.82rem] text-ink/50 font-light mb-10">
         Update your listing details.
       </p>
 
-      <div className="bg-b8 border border-b6 rounded-2xl p-8 max-w-[700px]">
+      <div className="bg-white border border-line p-8 max-w-[700px]">
         <EditListingForm
           listing={{
             id: listing.id,
