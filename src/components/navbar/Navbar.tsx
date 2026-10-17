@@ -92,9 +92,9 @@ export default function Navbar({ showToast }: NavbarProps) {
       >
         <Link
           href="/"
-          className="font-playfair text-[1.05rem] md:text-[1.25rem] tracking-[0.32em] uppercase text-ink no-underline justify-self-start"
+          className="font-playfair text-[0.85rem] md:text-[1.15rem] tracking-[0.18em] md:tracking-[0.28em] uppercase text-ink no-underline justify-self-start whitespace-nowrap"
         >
-          ByShana
+          Your-Wardrobe
         </Link>
 
         <ul className="hidden lg:flex gap-8 list-none items-center">
@@ -208,7 +208,7 @@ export default function Navbar({ showToast }: NavbarProps) {
         }`}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-line">
-          <span className="font-playfair text-[1rem] tracking-[0.3em] uppercase text-ink">ByShana</span>
+          <span className="font-playfair text-[0.85rem] tracking-[0.2em] uppercase text-ink whitespace-nowrap">Your-Wardrobe</span>
           <button
             className="flex flex-col justify-center gap-[5px] cursor-pointer p-2 bg-transparent border-none"
             onClick={() => setMobileOpen(false)}
