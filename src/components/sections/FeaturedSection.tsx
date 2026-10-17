@@ -8,21 +8,26 @@ export default async function FeaturedSection() {
   const featured = listings.map(dbListingToDisplay);
 
   return (
-    <section className="py-20 px-12 max-[900px]:px-6">
-      <div className="flex items-center justify-between mb-12">
+    <section className="bg-white py-16 lg:py-20 px-6 sm:px-10 lg:px-16 border-t border-line">
+      <div className="flex items-end justify-between mb-10">
         <div>
-          <span className="text-[0.66rem] tracking-[0.18em] uppercase font-semibold block mb-2.5 text-accent">
-            Featured
-          </span>
-          <h2 className="font-playfair text-[2.3rem] font-normal text-b1 leading-tight">
-            Trending right now
+          <span className="eyebrow text-ink/45 block mb-3">New arrivals</span>
+          <h2 className="font-playfair text-[2rem] sm:text-[2.4rem] font-normal text-ink leading-tight">
+            Featured this week
           </h2>
+          <p className="text-[0.82rem] font-light text-ink/50 mt-2">
+            Curated pieces from wardrobes across the UK.
+          </p>
         </div>
         <Link
           href="/browse"
-          className="bg-b1 text-b8 border-none py-[0.72rem] px-[1.5rem] rounded-[28px] text-[0.78rem] font-medium no-underline transition-colors duration-200 hover:bg-b2"
+          className="text-[0.66rem] tracking-[0.18em] uppercase font-semibold text-ink no-underline flex items-center gap-2 hover:gap-3 transition-all duration-200 border-b border-ink pb-1"
         >
-          View all listings
+          View all
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </Link>
       </div>
 
@@ -30,7 +35,9 @@ export default async function FeaturedSection() {
         <ProductGrid items={featured} />
       ) : (
         <div className="text-center py-16">
-          <p className="text-b4 text-[0.88rem]">No listings yet. Be the first to list your clothes!</p>
+          <p className="text-ink/50 text-[0.85rem]">
+            No listings yet. Be the first to list your clothes!
+          </p>
         </div>
       )}
     </section>

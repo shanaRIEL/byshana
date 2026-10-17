@@ -61,6 +61,7 @@ export interface Listing {
   condition: string;
   status: ListingStatus;
   createdAt: Date;
+  image?: string | null;
 }
 
 export function dbListingToDisplay(db: DbListing): Listing {
@@ -105,6 +106,7 @@ export function dbListingToDisplay(db: DbListing): Listing {
     condition: db.condition,
     status: db.status,
     createdAt: db.createdAt,
+    image: db.images?.[0]?.url ?? null,
   };
 }
 

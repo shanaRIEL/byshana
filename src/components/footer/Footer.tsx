@@ -29,8 +29,8 @@ export default function Footer({
     <footer className="bg-b1 px-12 pt-14 pb-8 max-[900px]:px-8">
       <div className="grid grid-cols-[2fr_1fr_1fr_1fr] gap-8 mb-12 max-[900px]:grid-cols-2">
         <div>
-          <p className="font-great-vibes text-[2.2rem] text-b6 mb-0.8rem">
-            Shana
+          <p className="font-playfair text-[1.3rem] tracking-[0.3em] uppercase text-b6 mb-0.8rem">
+            ByShana
           </p>
           <p className="text-[0.78rem] text-b4 leading-relaxed font-light max-w-240px">
             {description}

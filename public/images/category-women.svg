@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bgw" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#EFE6DA"/>
+      <stop offset="100%" stop-color="#DACBB6"/>
+    </linearGradient>
+    <linearGradient id="dress" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C9A98A"/>
+      <stop offset="100%" stop-color="#A97F58"/>
+    </linearGradient>
+    <filter id="blw" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#bgw)"/>
+  <g opacity="0.45" filter="url(#blw)">
+    <polygon points="340,-40 560,-70 620,320 400,380" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+  <ellipse cx="300" cy="700" rx="150" ry="20" fill="#8A7660" opacity="0.3" filter="url(#blw)"/>
+
+  <!-- hanger -->
+  <path d="M300 92 q0 -22 -18 -22 q-16 0 -16 18" fill="none" stroke="#6E5638" stroke-width="5" stroke-linecap="round"/>
+  <path d="M186 176 l114 -70 114 70" fill="none" stroke="#6E5638" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- slip dress -->
+  <path d="M244 176 h112
+           q10 40 26 74
+           q22 46 30 120
+           q-64 26 -128 26
+           q-64 0 -128 -26
+           q8 -74 30 -120
+           q16 -34 26 -74
+           z" fill="url(#dress)" stroke="#7A5334" stroke-width="2"/>
+  <!-- straps -->
+  <path d="M256 176 l-8 -46 M344 176 l8 -46" stroke="#7A5334" stroke-width="4" stroke-linecap="round"/>
+  <!-- waist seam -->
+  <path d="M214 330 q86 22 172 0" fill="none" stroke="#7A5334" stroke-width="2" opacity="0.8"/>
+  <!-- skirt flow lines -->
+  <path d="M236 360 q-16 120 -34 210 M300 366 v214 M364 360 q16 120 34 210" fill="none" stroke="#7A5334" stroke-width="1.6" opacity="0.55"/>
+</svg>

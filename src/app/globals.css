@@ -12,6 +12,12 @@
   --color-accent: #8B4513;
   --color-warm: #C07840;
 
+  /* Editorial palette (Phase 1 redesign) */
+  --color-ink: #14100c;
+  --color-sand: #EFE8DD;
+  --color-sand-deep: #E2D7C6;
+  --color-line: #E7DFD2;
+
   --font-great-vibes: "Great Vibes", cursive;
   --font-montserrat: "Montserrat", sans-serif;
   --font-playfair: "Playfair Display", serif;
@@ -40,6 +46,54 @@ body {
   border-radius: 3px;
 }
 
+/* Shared editorial helpers */
+.eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-ink);
+  color: var(--color-b8);
+  border: 1px solid var(--color-ink);
+  padding: 0.9rem 2.1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-ink:hover {
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  padding: 0.9rem 2.1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-outline:hover {
+  background: var(--color-ink);
+  color: var(--color-b8);
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -61,4 +115,19 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease both;
 }

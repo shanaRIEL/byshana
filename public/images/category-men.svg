@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="bgm" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#E9DFD0"/>
+      <stop offset="100%" stop-color="#D6C8B2"/>
+    </linearGradient>
+    <linearGradient id="jacket" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2E2823"/>
+      <stop offset="100%" stop-color="#1A1512"/>
+    </linearGradient>
+    <filter id="blm" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#bgm)"/>
+  <g opacity="0.45" filter="url(#blm)">
+    <polygon points="60,-40 300,-80 420,300 140,360" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+  <ellipse cx="300" cy="690" rx="160" ry="22" fill="#8A7660" opacity="0.3" filter="url(#blm)"/>
+
+  <!-- shirt -->
+  <path d="M232 250 h136 l10 380 h-156 z" fill="#EFE7DA" stroke="#B7A88F" stroke-width="2"/>
+
+  <!-- blazer -->
+  <path d="M226 246
+           q-14 4 -18 26
+           l-22 190
+           q-3 22 11 26
+           q12 3 16 -16
+           l12 -110
+           v180
+           q2 24 20 26
+           h120
+           q18 -2 20 -26
+           v-180
+           l12 110
+           q4 19 16 16
+           q14 -4 11 -26
+           l-22 -190
+           q-4 -22 -18 -26
+           z" fill="url(#jacket)" stroke="#0E0B09" stroke-width="2"/>
+  <path d="M272 248 l28 92 -46 -30 z" fill="#3D352E" stroke="#0E0B09" stroke-width="1.4"/>
+  <path d="M328 248 l-28 92 46 -30 z" fill="#3D352E" stroke="#0E0B09" stroke-width="1.4"/>
+  <circle cx="288" cy="400" r="5" fill="#C9B294"/>
+  <circle cx="288" cy="436" r="5" fill="#C9B294"/>
+
+  <!-- trousers -->
+  <path d="M232 630 h136 l14 130 h-52 l-26 -92 -26 92 h-52 z" fill="#2A241E"/>
+</svg>

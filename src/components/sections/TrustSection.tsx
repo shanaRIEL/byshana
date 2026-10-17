@@ -1,78 +1,73 @@
-import { trustCards } from "@/data";
-
-const icons: Record<string, React.ReactNode> = {
-  shield: (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      stroke="#3A1F0D"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M11 2L4 6v5c0 4.4 3 7.5 7 9 4-1.5 7-4.6 7-9V6l-7-4z" />
-      <path d="M8 11l2 2 4-4" />
-    </svg>
-  ),
-  lock: (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      stroke="#3A1F0D"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="5" y="10" width="12" height="9" rx="2" />
-      <path d="M7 10V7a4 4 0 018 0v3" />
-    </svg>
-  ),
-  check: (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      stroke="#3A1F0D"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="9" />
-      <path d="M8 11l2 2 4-4" />
-    </svg>
-  ),
-};
+const benefits = [
+  {
+    title: "Rent from £10/day",
+    sub: "1–7 day rentals, UK-wide",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3l1.2 3.6L17 8l-3.8 1.4L12 13l-1.2-3.6L7 8l3.8-1.4z" />
+        <path d="M5 15l.7 2.1L8 18l-2.3.8L5 21l-.7-2.2L2 18l2.3-.9z" />
+        <path d="M18 14l.6 1.7L20 16.4l-1.4.6L18 19l-.6-2-1.4-.6 1.4-.7z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Verified members",
+    sub: "ID-checked community",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3l7 3v5c0 4.4-2.9 7.6-7 9-4.1-1.4-7-4.6-7-9V6z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Secure payments",
+    sub: "Protected by Stripe",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="10" width="16" height="11" rx="2" />
+        <path d="M8 10V7a4 4 0 018 0v3" />
+      </svg>
+    ),
+  },
+  {
+    title: "Earn 90%",
+    sub: "You keep the majority",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v10M9.5 9.5c0-1.1 1.1-2 2.5-2s2.5.9 2.5 2-1.1 2-2.5 2-2.5.9-2.5 2 1.1 2 2.5 2 2.5-.9 2.5-2" />
+      </svg>
+    ),
+  },
+];
 
 export default function TrustSection() {
   return (
-    <section className="py-20 px-12 bg-b7 max-[900px]:px-6">
-      <span className="text-[0.66rem] tracking-[0.18em] uppercase font-semibold block mb-2.5 text-b3">
-        Why people trust Shana
-      </span>
-      <h2 className="font-playfair text-[2.3rem] font-normal text-b1 mb-2.5 leading-tight">
-        Safe, simple and transparent
-      </h2>
-
-      <div className="grid grid-cols-3 gap-[1.2rem] mt-12 max-[900px]:grid-cols-1">
-        {trustCards.map((card) => (
+    <section className="bg-white border-y border-line">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-6 sm:px-10 lg:px-16">
+        {benefits.map((b, i) => (
           <div
-            key={card.title}
-            className="bg-b8 rounded-[18px] p-8 border border-b6/50 transition-transform duration-200 hover:-translate-y-[3px]"
+            key={b.title}
+            className={[
+              "flex items-center gap-4 py-7 lg:py-8 lg:px-8",
+              i > 0 ? "border-t border-line sm:border-t-0" : "",
+              i % 2 === 1 ? "sm:border-l sm:border-line" : "",
+              i >= 2 ? "sm:border-t sm:border-line lg:border-t-0" : "",
+              i === 2 ? "lg:border-l lg:border-line" : "",
+              i === 0 ? "lg:pl-0" : "",
+              i === 3 ? "lg:pr-0" : "",
+            ].join(" ")}
           >
-            <div className="w-12 h-12 rounded-[14px] bg-b6 flex items-center justify-center mb-5">
-              {icons[card.icon]}
+            <div className="w-10 h-10 rounded-full bg-sand flex items-center justify-center text-ink shrink-0">
+              {b.icon}
             </div>
-            <h3 className="text-[0.92rem] font-semibold text-b1 mb-2">
-              {card.title}
-            </h3>
-            <p className="text-[0.8rem] text-b3 leading-[1.7] font-light">
-              {card.description}
-            </p>
+            <div>
+              <div className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-ink mb-[0.15rem]">
+                {b.title}
+              </div>
+              <div className="text-[0.72rem] font-light text-ink/50">{b.sub}</div>
+            </div>
           </div>
         ))}
       </div>
